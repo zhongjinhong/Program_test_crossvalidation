@@ -29,11 +29,7 @@ function [  ] = compare( experiment_num )
                     load(file_name);                    
             end
             
-            if ( experiment_num >= 25 && experiment_num <= 28 )
-                file_name=sprintf('%s%s',input_file_dir,'../coeff.mat');
-                load(file_name);
-                X = X*coeff;
-            end
+
             
             
             index = find(sum(Y~=-2,2)>0);
@@ -89,58 +85,58 @@ function [  ] = compare( experiment_num )
             pause(1)
 
 
-%             file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
-%             save(file_name,'W_LFC');
-%             file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
-%             save(file_name,'W_PC');
-%             file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
-%             save(file_name,'W_MV');
-%             file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
-%             save(file_name,'W_M3V');      
-%             file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
-%             save(file_name,'W_LCM');
-% 
-% 
-%             file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
-%             save(file_name,'W_MV_Probability');
-%             file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
-%             save(file_name,'W_DS_Estimator');
-% 
-% 
-%             count=count;
-%             file_name=sprintf('%s%s',output_file_dir,'count.mat');
-%             save(file_name,'count','-v7.3');
-% 
-%             file_name=sprintf('%s%s',output_file_dir,'Time.mat');
-%             save(file_name,'Time_*');            
+            file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
+            save(file_name,'W_LFC');
+            file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
+            save(file_name,'W_PC');
+            file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
+            save(file_name,'W_MV');
+            file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
+            save(file_name,'W_M3V');      
+            file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
+            save(file_name,'W_LCM');
+
+
+            file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
+            save(file_name,'W_MV_Probability');
+            file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
+            save(file_name,'W_DS_Estimator');
+
+
+            count=count;
+            file_name=sprintf('%s%s',output_file_dir,'count.mat');
+            save(file_name,'count','-v7.3');
+
+            file_name=sprintf('%s%s',output_file_dir,'Time.mat');
+            save(file_name,'Time_*');            
         
         
         end
 
-        file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
-        save(file_name,'W_LFC');
-        file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
-        save(file_name,'W_PC');
-        file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
-        save(file_name,'W_MV');
-        file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
-        save(file_name,'W_M3V');      
-        file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
-        save(file_name,'W_LCM');
-        
-        
-        file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
-        save(file_name,'W_MV_Probability');
-        file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
-        save(file_name,'W_DS_Estimator');
-        
-        
-        count=count;
-        file_name=sprintf('%s%s',output_file_dir,'count.mat');
-        save(file_name,'count','-v7.3');
-
-        file_name=sprintf('%s%s',output_file_dir,'Time.mat');
-        save(file_name,'Time_*');
+%         file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
+%         save(file_name,'W_LFC');
+%         file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
+%         save(file_name,'W_PC');
+%         file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
+%         save(file_name,'W_MV');
+%         file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
+%         save(file_name,'W_M3V');      
+%         file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
+%         save(file_name,'W_LCM');
+%         
+%         
+%         file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
+%         save(file_name,'W_MV_Probability');
+%         file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
+%         save(file_name,'W_DS_Estimator');
+%         
+%         
+%         count=count;
+%         file_name=sprintf('%s%s',output_file_dir,'count.mat');
+%         save(file_name,'count','-v7.3');
+% 
+%         file_name=sprintf('%s%s',output_file_dir,'Time.mat');
+%         save(file_name,'Time_*');
 
 
     end

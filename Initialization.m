@@ -87,8 +87,8 @@ switch experiment_num
         total_repeat_num=2;begin_num=1;end_num=10;step_num = 5;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num); 
         title_name='Scalability for annotator number';
     case 12%%% for test
-        input_file_dir='../Input Data/Real_Data_AAAI_low_dimension/Real Label/';
-        output_file_dir='../Output Data/Real_Data_AAAI_low_dimension/Real Label/';
+        input_file_dir='../Input Data/Real_Data_AAAI_balance/Real Label/';
+        output_file_dir='../Output Data/Real_Data_AAAI_balance/Real Label/';
         total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
         title_name='NER(Real Data)';   
         
@@ -133,31 +133,51 @@ switch experiment_num
         output_file_dir='../Output Data/Real_Data_AAAI/Real Label/';
         total_repeat_num=5;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
         title_name='NER(Real Data)';
+    
         
         
-        
-        
-        
-        
-    case 29%%total_repeat_num=1 needs about 10h
-        input_file_dir='../Input Data/tiantian/Clustering/';
-        output_file_dir='../Output Data/tiantian/Clustering/';
-        total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-        title_name='Flower(Yan Yan''s Data)';              
+    case 29
+        input_file_dir='../Input Data/Real_Data_AAAI_balance/Clustering/';
+        output_file_dir='../Output Data/Real_Data_AAAI_balance/Clustering/';
+        total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+        title_name='NER(Real Data)';       
     case 30
-        input_file_dir='../Input Data/tiantian/latent model/';
-        output_file_dir='../Output Data/tiantian/latent model/';
-        total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-        title_name='Flower(Raykar''s Data)';
+        input_file_dir='../Input Data/Real_Data_AAAI_balance/latent model/';
+        output_file_dir='../Output Data/Real_Data_AAAI_balance/latent model/';
+        total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+        title_name='NER(Real Data)';                  
     case 31
-        input_file_dir='../Input Data/tiantian/expertise_difficult_model/';
-        output_file_dir='../Output Data/tiantian/expertise_difficult_model/';
-        total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-        title_name='Flower(Whitehill''s Data)';
+        input_file_dir='../Input Data/Real_Data_AAAI_balance/expertise_difficult_model/';
+        output_file_dir='../Output Data/Real_Data_AAAI_balance/expertise_difficult_model/';
+        total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+        title_name='NER(Real Data)';       
     case 32
-        input_file_dir='../Input Data/tiantian/Real Label/';
-        output_file_dir='../Output Data/tiantian/Real Label/';
-        total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-        title_name='Flower(Real Data)';
+        input_file_dir='../Input Data/Real_Data_AAAI_balance/Real Label/';
+        output_file_dir='../Output Data/Real_Data_AAAI_balance/Real Label/';
+        total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+        title_name='NER(Real Data)';           
+        
+        
+        
+%     case 29%%total_repeat_num=1 needs about 10h
+%         input_file_dir='../Input Data/tiantian/Clustering/';
+%         output_file_dir='../Output Data/tiantian/Clustering/';
+%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+%         title_name='Flower(Yan Yan''s Data)';              
+%     case 30
+%         input_file_dir='../Input Data/tiantian/latent model/';
+%         output_file_dir='../Output Data/tiantian/latent model/';
+%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+%         title_name='Flower(Raykar''s Data)';
+%     case 31
+%         input_file_dir='../Input Data/tiantian/expertise_difficult_model/';
+%         output_file_dir='../Output Data/tiantian/expertise_difficult_model/';
+%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+%         title_name='Flower(Whitehill''s Data)';
+%     case 32
+%         input_file_dir='../Input Data/tiantian/Real Label/';
+%         output_file_dir='../Output Data/tiantian/Real Label/';
+%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+%         title_name='Flower(Real Data)';
         
 end

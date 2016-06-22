@@ -61,10 +61,10 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
 %                 predict_lable(k,t).label = sign( w0*X(1:n,:)' +b )';                
             end
             
-%             balance = sum( predict_lable(k,t).label == 1)/n;
-%             if balance > 0.8 || balance < 0.2
-%                 continue;
-%             end
+            balance = sum( predict_lable(k,t).label == 1)/n;
+            if balance >0.99 || balance < 0.01
+                continue;
+            end
 
             for i=1:n
                 if(predict_lable(k,t).label(i,1)==1)
