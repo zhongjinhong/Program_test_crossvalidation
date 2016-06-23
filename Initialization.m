@@ -139,22 +139,22 @@ switch experiment_num
     case 29
         input_file_dir='../Input Data/Real_Data_AAAI_balance/Clustering/';
         output_file_dir='../Output Data/Real_Data_AAAI_balance/Clustering/';
-        total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+        total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
         title_name='NER(Real Data)';       
     case 30
         input_file_dir='../Input Data/Real_Data_AAAI_balance/latent model/';
         output_file_dir='../Output Data/Real_Data_AAAI_balance/latent model/';
-        total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+        total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
         title_name='NER(Real Data)';                  
     case 31
         input_file_dir='../Input Data/Real_Data_AAAI_balance/expertise_difficult_model/';
         output_file_dir='../Output Data/Real_Data_AAAI_balance/expertise_difficult_model/';
-        total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+        total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
         title_name='NER(Real Data)';       
     case 32
         input_file_dir='../Input Data/Real_Data_AAAI_balance/Real Label/';
         output_file_dir='../Output Data/Real_Data_AAAI_balance/Real Label/';
-        total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+        total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
         title_name='NER(Real Data)';           
         
         
