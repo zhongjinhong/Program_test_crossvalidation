@@ -16,13 +16,13 @@ function [W]=MV_Probability(X,Y,svm_para)
     end
     
     %%%%%% modified for exp %%%%%%%%%%%%%%
-    for i = 1:2*n
-        if(count(i,1)>0.5)
-            count(i,1)=exp(count(i,1))-exp(0.5);
-        else
-            count(i,1)=0;
-        end
-    end
+%     for i = 1:2*n
+%         if(count(i,1)>0.5)
+%             count(i,1)=exp(count(i,1))-exp(0.5);
+%         else
+%             count(i,1)=0;
+%         end
+%     end
     %%%%%% modified for exp %%%%%%%%%%%%%%
     
     

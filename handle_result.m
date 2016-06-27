@@ -241,38 +241,38 @@ function [  ] = handle_result( experiment_num )
         Result_MV_Probability(t)= Result_MV_Probability(t)/n;
     end   
     
-    
+%     
     Result_DS_Estimator=zeros(total_iteration_num,1);
-    for t=1:total_iteration_num   
-        repeat_num = ceil(t/total_repeat_num);
-        k = mod(t, total_repeat_num)+1;
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
-        load(file_name);
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
-        load(file_name);
-        [n d]=size(X_test);
-        X_test(:,d+1)=ones(n,1);
-        target=(0.5*Y_test+0.5)';
-        predict_label=zeros(n,1);
-        
-       
-        for i=1:n
-            predict_label(i,1)=W_DS_Estimator(t,:)*X_test(i,:)';
-            if(predict_label(i,1)*Y_test(i)>0)
-                Result_DS_Estimator(t)=Result_DS_Estimator(t)+1;
-            elseif(predict_label(i,1)*Y_test(i)==0)
-                Result_DS_Estimator(t)=Result_DS_Estimator(t)+0.5;
-            end
-        end
-        [tpr,fpr] = roc(target,predict_label');
-        point_num = size(tpr,2);
-        if tpr(point_num)~=1 || fpr(point_num)~=1
-            tpr(1,point_num+1) = 1;
-            fpr(1,point_num+1) = 1;
-        end
-        AUC_DS_Estimator(t) = trapz(fpr,tpr);
-        Result_DS_Estimator(t)= Result_DS_Estimator(t)/n;
-    end       
+%     for t=1:total_iteration_num   
+%         repeat_num = ceil(t/total_repeat_num);
+%         k = mod(t, total_repeat_num)+1;
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
+%         [n d]=size(X_test);
+%         X_test(:,d+1)=ones(n,1);
+%         target=(0.5*Y_test+0.5)';
+%         predict_label=zeros(n,1);
+%         
+%        
+%         for i=1:n
+%             predict_label(i,1)=W_DS_Estimator(t,:)*X_test(i,:)';
+%             if(predict_label(i,1)*Y_test(i)>0)
+%                 Result_DS_Estimator(t)=Result_DS_Estimator(t)+1;
+%             elseif(predict_label(i,1)*Y_test(i)==0)
+%                 Result_DS_Estimator(t)=Result_DS_Estimator(t)+0.5;
+%             end
+%         end
+%         [tpr,fpr] = roc(target,predict_label');
+%         point_num = size(tpr,2);
+%         if tpr(point_num)~=1 || fpr(point_num)~=1
+%             tpr(1,point_num+1) = 1;
+%             fpr(1,point_num+1) = 1;
+%         end
+%         AUC_DS_Estimator(t) = trapz(fpr,tpr);
+%         Result_DS_Estimator(t)= Result_DS_Estimator(t)/n;
+%     end       
     
  
     
@@ -292,16 +292,42 @@ function [  ] = handle_result( experiment_num )
         acc_MV_Probability(i)=mean(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
         acc_DS_Estimator(i)=mean(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));
 
-        auc_LFC(i)=mean(AUC_LFC( (i-1)*repeat_num+1:i*repeat_num));
-        auc_PC(i)=mean(AUC_PC( (i-1)*repeat_num+1:i*repeat_num));
-        auc_MV(i)=mean(AUC_MV( (i-1)*repeat_num+1:i*repeat_num));
-        auc_M3V(i)=mean(AUC_M3V( (i-1)*repeat_num+1:i*repeat_num));
-%         auc_YAN(i)=mean(AUC_YAN( (i-1)*repeat_num+1:i*repeat_num));
-        auc_Soft_LCM(i)=mean( AUC_LCM( (i-1)*repeat_num+1:i*repeat_num) );
-        auc_MV_Probability(i)=mean(AUC_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
-        auc_DS_Estimator(i)=mean(AUC_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));
+        
+        
+        std_LFC(i)=std(Result_LFC( (i-1)*repeat_num+1:i*repeat_num));
+        std_PC(i)=std(Result_PC( (i-1)*repeat_num+1:i*repeat_num));
+        std_MV(i)=std(Result_MV( (i-1)*repeat_num+1:i*repeat_num));
+        std_M3V(i)=std(Result_M3V( (i-1)*repeat_num+1:i*repeat_num));
+%         acc_YAN(i)=mean(Result_YAN( (i-1)*repeat_num+1:i*repeat_num));   
+        std_Soft_LCM(i)=std( Result_LCM( (i-1)*repeat_num+1:i*repeat_num) );
+        std_MV_Probability(i)=std(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
+        std_DS_Estimator(i)=std(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));        
+        
+        
+        
+%         auc_LFC(i)=mean(AUC_LFC( (i-1)*repeat_num+1:i*repeat_num));
+%         auc_PC(i)=mean(AUC_PC( (i-1)*repeat_num+1:i*repeat_num));
+%         auc_MV(i)=mean(AUC_MV( (i-1)*repeat_num+1:i*repeat_num));
+%         auc_M3V(i)=mean(AUC_M3V( (i-1)*repeat_num+1:i*repeat_num));
+% %         auc_YAN(i)=mean(AUC_YAN( (i-1)*repeat_num+1:i*repeat_num));
+%         auc_Soft_LCM(i)=mean( AUC_LCM( (i-1)*repeat_num+1:i*repeat_num) );
+%         auc_MV_Probability(i)=mean(AUC_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
+%         auc_DS_Estimator(i)=mean(AUC_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));
     end
 
+    h=zeros(6,1);
+    p=zeros(6,1);
+    [h(1),p(1),ci,status]=ttest(Result_LCM,Result_MV);
+    [h(2),p(2),ci,status]=ttest(Result_LCM,Result_M3V);
+    [h(3),p(3),ci,status]=ttest(Result_LCM,Result_LFC);
+    [h(4),p(4),ci,status]=ttest(Result_LCM,Result_PC);
+    [h(5),p(5),ci,status]=ttest(Result_LCM,Result_MV_Probability);
+    [h(6),p(6),ci,status]=ttest(Result_LCM,Result_DS_Estimator);
+    
+    
+    
+    accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_MV_Probability,acc_DS_Estimator,acc_Soft_LCM]
+    std_result=[std_MV,std_M3V,std_LFC,std_PC,std_MV_Probability,std_DS_Estimator,std_Soft_LCM]
     file_name=sprintf('%s%s',output_file_dir,'plot_data.mat');
     save(file_name,'*');
 end

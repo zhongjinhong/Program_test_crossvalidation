@@ -62,7 +62,7 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
             end
             
             balance = sum( predict_lable(k,t).label == 1)/n;
-            if balance >0.99 || balance < 0.01
+            if balance >0.90 || balance < 0.10
                 continue;
             end
 
