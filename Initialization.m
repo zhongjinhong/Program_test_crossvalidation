@@ -186,22 +186,22 @@ switch experiment_num
     case 45
         input_file_dir ='../Input Data/Real Data Standar/Clustering/';
         output_file_dir='../Output Data/Real Data Random1/Clustering/';
-        total_repeat_num=30;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
+        total_repeat_num=10;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
         title_name='Computing time(Yan Yan''s Data)';        
     case 46
         input_file_dir ='../Input Data/Real Data Standar/latent model/';
         output_file_dir='../Output Data/Real Data Random1/latent model/';
-        total_repeat_num=30;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
+        total_repeat_num=10;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
         title_name='Computing time(Raykar''s Data)'; 
     case 47
         input_file_dir ='../Input Data/Real Data Standar/expertise_difficult_model/';
         output_file_dir='../Output Data/Real Data Random1/expertise_difficult_model/';
-        total_repeat_num=30;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
+        total_repeat_num=10;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
         title_name='Computing time(Whitehill''s Data)'; 
     case 48
         input_file_dir ='../Input Data/Real Data Standar/Real Label/';
         output_file_dir='../Output Data/Real Data Random1/Real Label/';
-        total_repeat_num=30;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
+        total_repeat_num=10;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
         title_name='Computing time(Real Data)';    
                 
         
