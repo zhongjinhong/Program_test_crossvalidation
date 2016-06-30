@@ -1,6 +1,9 @@
-function [W,count]=LCM_test_linear(X,Y,svm_para)
+function [W,count]=LCM_test_linear_old(X,Y,svm_para)
+    index = find(sum(Y~=-2,2)>0);
+    X = X(index,:);
+    Y = Y(index,:);    
 
-    K=10;emusinon = 10^(-20);
+    K=10;emusinon = 10^(-6);
     [n,d]=size(X);expert_num=size(Y,2);
     X_temp=zeros(n,d);
     Y_temp=zeros(n,1);
@@ -14,7 +17,7 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
                 if Y(temp_index,t) ~= -2 %% if the annotator does not label this instance.
                     num = num +1;
                     X_temp(num,:)=X(temp_index,:);
-                    Y_temp(num,1)=Y(temp_index,t);
+                    Y_temp(num,1)=Y(temp_index,t); 
                 end
             end
 %             model(k,t)=svmtrain(ones(num,1), Y_temp(1:num,1), X_temp(1:num,:), svm_para);
@@ -39,7 +42,7 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
     %%%% Calculate the confidence of each boosting classifier
     accuracy_bagging=zeros(K,expert_num);
     Numm=zeros(K,expert_num);
-
+    
     num_positive = zeros(n,expert_num);
     num_negative = num_positive;
     accuracy_annotator = zeros(1,expert_num);
@@ -55,12 +58,10 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
             else
                 [predict_label_temp,decision,accuracy]=predict(ones(n,1),X_sparse,model(k,t));
                 predict_lable(k,t).label = predict_label_temp;
-%                 predict_lable(k,t).label = sign( w0*X(1:n,:)' +b )';
+%                 predict_lable(k,t).label = sign( w0*X(1:n,:)' +b )';                
             end
-
+            
             balance = sum( predict_lable(k,t).label == 1)/n;
-
-
             if balance >0.90 || balance < 0.10
                 continue;
             end
@@ -78,10 +79,10 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
                         accuracy_bagging(k,t)=accuracy_bagging(k,t)+1;
                     end
                 end
-
+   
             end
-
-
+                
+                
             if(Numm(k,t)>=5)
                 p = accuracy_bagging(k,t)/Numm(k,t);
                 accuracy_bagging(k,t) = accuracy_bagging(k,t)/Numm(k,t);
@@ -95,7 +96,7 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
         else
             accuracy_annotator(1, t) = -1;
         end
-
+        
     end
 
 
@@ -121,17 +122,10 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
             if Y(i,t) == -2
                 continue;
             end
-
-%             p1 = 1;
-%             p0 = 1;
             p1 = pz_positive;
             p0 = pz_negative;
             
-%             if i == 2 && t == 3
-%                 debug_temp = 1;
-%             end
-
-            for k=1:K
+            for k=1:K               
                 if(Numm(k,t)>=5)
                     if(predict_lable(k,t).label(i,1)==1)
                         p1 = p1*(accuracy_bagging(k,t)+emusinon);
@@ -140,38 +134,34 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
                         p1 = p1*(1-accuracy_bagging(k,t)+emusinon);
                         p0 = p0*(accuracy_bagging(k,t)+emusinon);
                     end
-%                     p1=p1/(p1+p0);
-%                     p0 = 1-p1;
                 end
-            end
-            p1=p1^(1/K);
-            p0=p0^(1/K);
-%
+            end                       
+% 
 %             p1 = pz_positive*(accuracy_annotator(1, t)+emusinon)^(num_positive(i,t))*(1-accuracy_annotator(1, t)+emusinon)^(num_negative(i,t));
 %             p0 = pz_negative*(accuracy_annotator(1, t)+emusinon)^(num_negative(i,t))*(1-accuracy_annotator(1, t)+emusinon)^(num_positive(i,t));
 
             if Y(i,t) == 1
-                Con(i,t) =( (p1+emusinon)/(p1+p0+emusinon) );
+                Con(i,t) = (p1+emusinon)/(p1+p0+emusinon);
             else
-                Con(i,t) =( (p0+emusinon)/(p1+p0+emusinon) );
-            end
-
+                Con(i,t) = (p0+emusinon)/(p1+p0+emusinon);
+            end        
+            
             if Con(i,t) < 0.5
                 Y(i,t) = -Y(i,t);
                 Con(i,t) = 1 - Con(i,t);
             end
-            Con(i,t) = exp(Con(i,t)) - exp(0.5);
-%             Con(i,t) = Con(i,t) - 0.5;
+%             Con(i,t) = exp(Con(i,t)) - exp(0.5);
+            Con(i,t) = Con(i,t) - 0.5;
         end
     end
 
 
     count=zeros(2*n,1);
     for i = 1:n
-        for t=1:expert_num
+        for t=1:expert_num        
             switch Y(i,t)
                 case -1
-                    count(i,1)=count(i,1)+Con(i,t);
+                    count(i,1)=count(i,1)+Con(i,t);                    
                 case 1
                     count(n+i,1)=count(n+i,1)+Con(i,t);
                 case -2
@@ -183,15 +173,11 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
     train_data=[X;X];
     train_label=ones(2*n,1);
     train_label(1:n,1) = -train_label(1:n,1);
-%     for i= 1:n
-%         count(i,1) = (count(i,1)+emusinon )/(count(i,1)+count(n+i,1)+2*emusinon );
-%         count(n+i,1) = 1-count(i,1);
-%     end
     weight=count/sum(count)*n;
 %     weight=count/max(count);
 %     weight=count;
     Model=svmtrain(weight,train_label,train_data,svm_para);
-
+    
 %     save('debug.mat','*','-v7.3');
     W=Model.sv_coef'*Model.SVs;
     b=-Model.rho;

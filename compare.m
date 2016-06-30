@@ -76,7 +76,19 @@ function [  ] = compare( experiment_num )
                     
             end
             
-
+            [n, expert_num]=size(Y);
+            for i=1:n
+                for t=1:expert_num
+                    if(Y(i,t)==-2)
+                        rn_num = rand();
+                        if rn_num > 0.5
+                            Y(i,t) = 1;
+                        else
+                            Y(i,t) = -1;
+                        end
+                    end
+                end
+            end
             
             
             index = find(sum(Y~=-2,2)>0);

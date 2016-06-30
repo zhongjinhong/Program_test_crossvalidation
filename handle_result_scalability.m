@@ -223,7 +223,7 @@ function [  ] = handle_result_scalability( experiment_num )
     title(title_name,'FontSize',16)
     xlabel('The instance number','FontSize',16);
     ylabel('The test accuracy(%)','FontSize',16);
-%     legend(han(1:7),'Raykar''s Model','Kajino''s Model','Majority Voting','M3V','Cost-sensitive','MV Probability','DS Estimator');            
+    legend(han(1:7),'Raykar''s Model','Kajino''s Model','Majority Voting','M3V','Cost-sensitive','MV Probability','DS Estimator');            
           
                 
 %     accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_MV_Probability,acc_DS_Estimator,acc_Soft_LCM]

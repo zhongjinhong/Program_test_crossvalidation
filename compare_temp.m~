@@ -1,10 +1,7 @@
-function [  ] = compare( experiment_num )
+function [  ] = compare_temp( experiment_num )
     Initialization();
     svm_para=sprintf('%s','-s 0 -t 0');
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    count_test = count;
-%     total_repeat_num=2;begin_num=10;end_num=11;count=zeros(end_num*10,(end_num-begin_num+1)*total_repeat_num); 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     for num=begin_num:end_num
         for repeat_num=1:total_repeat_num
             switch experiment_num
@@ -76,18 +73,7 @@ function [  ] = compare( experiment_num )
                     
             end
             
-            for i=1:n
-                for t=1:expert_num
-                    if(Y(i,t)==-2)
-                        rn_num = rand();
-                        if rn_num > 0.5
-                            Y(i,t) = 1
-                        else
-                            Y()
-                        Y(i,t)=0;
-                    end
-                end
-            end
+
             
             
             index = find(sum(Y~=-2,2)>0);
@@ -99,12 +85,12 @@ function [  ] = compare( experiment_num )
             n=size(X,1);
             expert_num=size(Y,2);
             
-            tic
-            W_MV( (num-begin_num)*total_repeat_num+repeat_num,: )=Majority_Method(X,Y,svm_para);            
-            Time_MV ((num-begin_num)*total_repeat_num+repeat_num)= toc;           
-            tic
-            W_M3V( (num-begin_num)*total_repeat_num+repeat_num,: )=M3V(X,Y,svm_para);
-            Time_M3V ((num-begin_num)*total_repeat_num+repeat_num)= toc;          
+%             tic
+%             W_MV( (num-begin_num)*total_repeat_num+repeat_num,: )=Majority_Method(X,Y,svm_para);            
+%             Time_MV ((num-begin_num)*total_repeat_num+repeat_num)= toc;           
+%             tic
+%             W_M3V( (num-begin_num)*total_repeat_num+repeat_num,: )=M3V(X,Y,svm_para);
+%             Time_M3V ((num-begin_num)*total_repeat_num+repeat_num)= toc;          
             tic
             [W_LCM( (num-begin_num)*total_repeat_num+repeat_num,: ),count( 1:2*n,(num-begin_num)*total_repeat_num+repeat_num )]=LCM_test_linear(X,Y,svm_para);
             Time_Soft_LCM((num-begin_num)*total_repeat_num+repeat_num)= toc;
