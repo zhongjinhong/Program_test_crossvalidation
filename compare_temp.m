@@ -1,7 +1,7 @@
 function [  ] = compare_temp( experiment_num )
     Initialization();
     svm_para=sprintf('%s','-s 0 -t 0');
-
+ 
     for num=begin_num:end_num
         for repeat_num=1:total_repeat_num
             switch experiment_num
@@ -59,11 +59,6 @@ function [  ] = compare_temp( experiment_num )
                         end 
                     end  
                     
-%                     unlabel_num = floor(0.9*n);
-%                     for t=1:expert_num*(num-1)
-%                         index = randperm(n);
-%                         Y_temp(index(1:unlabel_num),t) = -2;          
-%                     end  
                     
                     Y = [Y Y_temp];
                     
@@ -72,15 +67,11 @@ function [  ] = compare_temp( experiment_num )
                     
                     
             end
-            
 
-            
-            
             index = find(sum(Y~=-2,2)>0);
             X = X(index,:);
             Y = Y(index,:);              
-            
-            
+                       
             
             n=size(X,1);
             expert_num=size(Y,2);
