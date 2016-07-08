@@ -3,6 +3,8 @@ function [  ] = handle_result_scalability( experiment_num )
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     total_repeat_num=2;begin_num=10;end_num=11;count=zeros(end_num*10,(end_num-begin_num+1)*total_repeat_num); 
+%     total_repeat_num = 10;
+    end_num = 8;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 
     
@@ -209,7 +211,7 @@ function [  ] = handle_result_scalability( experiment_num )
 %         auc_DS_Estimator(i)=mean(AUC_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));
     end
     linewidth=2;
-    x_label = 1:end_num;
+    x_label = 0:end_num-1;
     figure()
     hold on
     han(1,1)=plot(x_label, acc_LFC,'-gs','LineWidth',linewidth,'MarkerFaceColor','g');
@@ -217,13 +219,13 @@ function [  ] = handle_result_scalability( experiment_num )
     han(3,1)=plot(x_label, acc_MV,'-cs','LineWidth',linewidth,'MarkerFaceColor','c');
     han(4,1)=plot(x_label, acc_M3V,'-ks','LineWidth',linewidth,'MarkerFaceColor','k');
     han(5,1)=plot(x_label, acc_Soft_LCM,'-rs','LineWidth',linewidth,'MarkerFaceColor','r');
-    han(6,1)=plot(x_label, acc_MV_Probability,'--m+','LineWidth',linewidth,'MarkerFaceColor','m');
-    han(7,1)=plot(x_label, acc_DS_Estimator,':mx','LineWidth',linewidth,'MarkerFaceColor','m');
+%     han(6,1)=plot(x_label, acc_MV_Probability,'--m+','LineWidth',linewidth,'MarkerFaceColor','m');
+%     han(7,1)=plot(x_label, acc_DS_Estimator,':mx','LineWidth',linewidth,'MarkerFaceColor','m');
 
     title(title_name,'FontSize',16)
-    xlabel('The instance number','FontSize',16);
+    xlabel('# of random annotators / # of normal annotators','FontSize',16);
     ylabel('The test accuracy(%)','FontSize',16);
-    legend(han(1:7),'Raykar''s Model','Kajino''s Model','Majority Voting','M3V','Cost-sensitive','MV Probability','DS Estimator');            
+    legend(han(1:5),'LC Model','PC Model','MV-LFC','M3V-LFC','CS-LFC');            
           
                 
 %     accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_MV_Probability,acc_DS_Estimator,acc_Soft_LCM]

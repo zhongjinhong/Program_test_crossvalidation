@@ -187,22 +187,22 @@ switch experiment_num
         input_file_dir ='../Input Data/Real Data Standar/Clustering/';
         output_file_dir='../Output Data/Real Data Random1/Clustering/';
         total_repeat_num=100;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Computing time(Yan Yan''s Data)';        
+        title_name='Twitter Topic(Clustering data)';        
     case 46
         input_file_dir ='../Input Data/Real Data Standar/latent model/';
         output_file_dir='../Output Data/Real Data Random1/latent model/';
         total_repeat_num=100;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Computing time(Raykar''s Data)'; 
+        title_name='Twitter Topic(Raykar''s Data)'; 
     case 47
         input_file_dir ='../Input Data/Real Data Standar/expertise_difficult_model/';
         output_file_dir='../Output Data/Real Data Random1/expertise_difficult_model/';
         total_repeat_num=100;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Computing time(Whitehill''s Data)'; 
+        title_name='Twitter Topic(Whitehill''s Data)'; 
     case 48
         input_file_dir ='../Input Data/Real Data Standar/Real Label/';
         output_file_dir='../Output Data/Real Data Random1/Real Label/';
         total_repeat_num=100;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Computing time(Real Data)';    
+        title_name='Twitter Topic(Crowdsourcing)';  
                 
         
         
@@ -210,22 +210,22 @@ switch experiment_num
         input_file_dir ='../Input Data/Real Data Standar/Clustering/';
         output_file_dir='../Output Data/Real Data Random2/Clustering/';
         total_repeat_num=30;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Computing time(Yan Yan''s Data)';        
+        title_name='Twitter Topic(Yan Yan''s Data)';        
     case 50
         input_file_dir ='../Input Data/Real Data Standar/latent model/';
         output_file_dir='../Output Data/Real Data Random2/latent model/';
         total_repeat_num=30;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Computing time(Raykar''s Data)'; 
+        title_name='Twitter Topic(Raykar''s Data)'; 
     case 51
         input_file_dir ='../Input Data/Real Data Standar/expertise_difficult_model/';
         output_file_dir='../Output Data/Real Data Random2/expertise_difficult_model/';
         total_repeat_num=30;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Computing time(Whitehill''s Data)'; 
+        title_name='Twitter Topic(Whitehill''s Data)'; 
     case 52
         input_file_dir ='../Input Data/Real Data Standar/Real Label/';
         output_file_dir='../Output Data/Real Data Random2/Real Label/';
         total_repeat_num=30;begin_num=11;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Computing time(Real Data)';          
+        title_name='Twitter Topic(Real Data)';          
    
 %     case 29%%total_repeat_num=1 needs about 10h
 %         input_file_dir='../Input Data/tiantian/Clustering/';
