@@ -92,7 +92,7 @@ function [W]=LCM(X,Y,svm_para)
             end
 
 
-            if(Numm(k,t)>=10)
+            if(Numm(k,t)>=5)
                 p = accuracy_bagging(k,t)/Numm(k,t);
                 accuracy_bagging(k,t) = accuracy_bagging(k,t)/Numm(k,t);
                 available_num = available_num + 1;
@@ -133,7 +133,7 @@ function [W]=LCM(X,Y,svm_para)
             p0 = 1;
 
             for k=1:K
-                if(Numm(k,t)>=10)
+                if(Numm(k,t)>=5)
                     if(predict_lable(k,t).label(i,1)==1)
                         p1 = p1*(accuracy_bagging(k,t)+emusinon);
                         p0 = p0*(1-accuracy_bagging(k,t)+emusinon);
