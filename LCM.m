@@ -55,13 +55,17 @@ function [W]=LCM(X,Y,svm_para)
                 predict_lable(k,t).label = predict_label_temp;
             end
 
-            balance = sum( predict_lable(k,t).label == 1)/n;
+%             balance = sum( predict_lable(k,t).label == 1)/n;
+% 
+% 
+%             if balance > 0.9 || balance < 0.1
+%                 continue;
+%             end
 
-
-            if balance > 0.9 || balance < 0.1
-                continue;
-            end
-
+            
+            
+            balance = 0;
+            
             for i=1:n
                 if(predict_lable(k,t).label(i,1)==1)
                   num_positive(i,t) = num_positive(i,t) + 1;
@@ -74,7 +78,15 @@ function [W]=LCM(X,Y,svm_para)
                     if(Y(i,t)==predict_lable(k,t).label(i,1))
                         accuracy_bagging(k,t)=accuracy_bagging(k,t)+1;
                     end
+                    
+                    if(1==predict_lable(k,t).label(i,1))
+                        balance = balance + 1;
+                    end
                 end
+            end
+            
+            if balance == 0 || balance == Numm(k,t)
+                continue
             end
 
 

@@ -27,7 +27,7 @@ function [  ] = handle_result( experiment_num )
     load(file_name);
     
     
-    total_iteration_num=size(W_MV,1);      
+    total_iteration_num=size(W_LCM1,1);      
 
     
     Result_LFC=zeros(total_iteration_num,1);
