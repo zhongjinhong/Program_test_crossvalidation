@@ -50,6 +50,7 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
             if size(model(k,t).Label,1) == 1
                 predict_lable(k,t).label = ones(n,1)*model(k,t).Label;
             elseif size(model(k,t).Label,1) == 0
+                accuracy_bagging(k,t) = 0.5;
                 continue;
             else
                 [predict_label_temp,decision,accuracy]=predict(ones(n,1),X_sparse,model(k,t));
@@ -60,6 +61,7 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
 
 
             if balance >0.90 || balance < 0.10
+                accuracy_bagging(k,t) = 0.5;
                 continue;
             end
 
@@ -84,6 +86,8 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
                 accuracy_bagging(k,t) = accuracy_bagging(k,t)/Numm(k,t);
                 available_num = available_num + 1;
                 total_accuracy = total_accuracy + p;
+            else
+                accuracy_bagging(k,t) = 0.5;
             end
 
         end
@@ -180,4 +184,8 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
     if(Model.Label(1,1)~=1)
         W=-W;
     end
+    
+%     save('LCM_test_linear_debug.mat','*');
+    
+    
 end
