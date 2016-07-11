@@ -56,7 +56,7 @@ function [  ] = handle_time( experiment_num, type )
             time_MV_Probability(i)=mean(Time_MV_Probability( (i-1)*total_repeat_num+1:i*total_repeat_num));
             time_DS_Estimator(i)=mean(Time_DS_Estimator( (i-1)*total_repeat_num+1:i*total_repeat_num));
         end
-        x_label = 10:10:110;
+        x_label = 5:5:55;
         linewidth = 2;
         figure();
         hold on
@@ -74,24 +74,24 @@ function [  ] = handle_time( experiment_num, type )
         xlabel('The annotator number','FontSize',16);
         ylabel('The computing time (s)','FontSize',16);
         
-%         figure();
-%         hold on
-%         han(1,1)=plot(x_label, time_MV,'-cs','LineWidth',linewidth,'MarkerFaceColor','c');
-%         han(2,1)=plot(x_label, time_M3V,'-ks','LineWidth',linewidth,'MarkerFaceColor','k');
-%         han(3,1)=plot(x_label, time_LFC,'-gs','LineWidth',linewidth,'MarkerFaceColor','g');
-%         han(4,1)=plot(x_label, time_Soft_LCM,'-rs','LineWidth',linewidth,'MarkerFaceColor','r');
-%         legend(han(1:4),'MV-LFC','M3V-LFC','LC Model','CS-LFC');             
-%         xlabel('The annotator number','FontSize',16);
-%         ylabel('The computing time (s)','FontSize',16);    
-%         
-%         
-%         figure();
-%         hold on
-%         han(1,1)=plot(x_label, time_MV,'-cs','LineWidth',linewidth,'MarkerFaceColor','c');
-%         han(2,1)=plot(x_label, time_M3V,'-ks','LineWidth',linewidth,'MarkerFaceColor','k');
-%         legend(han(1:2),'MV-LFC','M3V-LFC');             
-%         xlabel('The annotator number','FontSize',16);
-%         ylabel('The computing time (s)','FontSize',16);          
+        figure();
+        hold on
+        han(1,1)=plot(x_label, time_MV,'-cs','LineWidth',linewidth,'MarkerFaceColor','c');
+        han(2,1)=plot(x_label, time_M3V,'-ks','LineWidth',linewidth,'MarkerFaceColor','k');
+        han(3,1)=plot(x_label, time_LFC,'-gs','LineWidth',linewidth,'MarkerFaceColor','g');
+        han(4,1)=plot(x_label, time_Soft_LCM,'-rs','LineWidth',linewidth,'MarkerFaceColor','r');
+        legend(han(1:4),'MV-LFC','M3V-LFC','LC Model','CS-LFC');             
+        xlabel('The annotator number','FontSize',16);
+        ylabel('The computing time (s)','FontSize',16);    
+        
+        
+        figure();
+        hold on
+        han(1,1)=plot(x_label, time_MV,'-cs','LineWidth',linewidth,'MarkerFaceColor','c');
+        han(2,1)=plot(x_label, time_M3V,'-ks','LineWidth',linewidth,'MarkerFaceColor','k');
+        legend(han(1:2),'MV-LFC','M3V-LFC');             
+        xlabel('The annotator number','FontSize',16);
+        ylabel('The computing time (s)','FontSize',16);          
         
 
         
@@ -105,7 +105,7 @@ function [  ] = handle_time( experiment_num, type )
         legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC');      
 
         xlabel('The annotator number','FontSize',16);
-        ylabel('The mutiples of computing time','FontSize',16); 
+        ylabel('The mutiples of ','FontSize',16); 
         
     end
             
