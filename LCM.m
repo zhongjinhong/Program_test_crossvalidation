@@ -108,13 +108,13 @@ function [W]=LCM(X,Y,svm_para)
 
 %%%%%%%%%%%%% Initial all data %%%%%%%%%%%%%
 
-    for t = 1:expert_num
-        for i = 1:n
-            if Y(i,t) == -2
-                Y(i,t) = 1;
-            end
-        end
-    end
+%     for t = 1:expert_num
+%         for i = 1:n
+%             if Y(i,t) == -2
+%                 Y(i,t) = 1;
+%             end
+%         end
+%     end
 
 
 %%%%%%%%%%%%%Calculate each label's weight
