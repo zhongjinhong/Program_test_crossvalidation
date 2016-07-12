@@ -83,7 +83,7 @@ function [  ] = compare( experiment_num )
 %             Time_Soft_LCM((num-begin_num)*total_repeat_num+repeat_num)= toc;
 
             
-            W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
+%             W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
 %             W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM_compare(X,Y,svm_para);  
 
             
@@ -165,8 +165,8 @@ function [  ] = compare( experiment_num )
 %         
         file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
         save(file_name,'W_LCM1');
-        file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
-        save(file_name,'W_LCM2');        
+%         file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
+%         save(file_name,'W_LCM2');        
 %         
 %         
 %         file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
