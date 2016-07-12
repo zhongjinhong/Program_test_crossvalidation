@@ -163,8 +163,8 @@ function [  ] = compare( experiment_num )
 %         file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
 %         save(file_name,'W_LCM');
 %         
-        file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
-        save(file_name,'W_LCM1');
+%         file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
+%         save(file_name,'W_LCM1');
         file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
         save(file_name,'W_LCM2');        
 %         
