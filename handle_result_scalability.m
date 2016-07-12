@@ -4,7 +4,7 @@ function [  ] = handle_result_scalability( experiment_num )
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     total_repeat_num=2;begin_num=10;end_num=11;count=zeros(end_num*10,(end_num-begin_num+1)*total_repeat_num); 
 %     total_repeat_num = 10;
-    end_num = 8;
+    end_num = 6;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 
     
@@ -212,22 +212,42 @@ function [  ] = handle_result_scalability( experiment_num )
     end
     linewidth=2;
     x_label = 0:end_num-1;
-    figure()
+%     figure()
+%     hold on
+%     han(1,1)=plot(x_label, acc_LFC,'-gs','LineWidth',linewidth,'MarkerFaceColor','g');
+%     han(2,1)=plot(x_label, acc_PC,'-bs','LineWidth',linewidth,'MarkerFaceColor','b');
+%     han(3,1)=plot(x_label, acc_MV,'-cs','LineWidth',linewidth,'MarkerFaceColor','c');
+%     han(4,1)=plot(x_label, acc_M3V,'-ks','LineWidth',linewidth,'MarkerFaceColor','k');
+%     han(5,1)=plot(x_label, acc_Soft_LCM,'-rs','LineWidth',linewidth,'MarkerFaceColor','r');
+%     title(title_name,'FontSize',16)
+%     xlabel('# of random annotators / # of normal annotators','FontSize',16);
+%     ylabel('The test accuracy(%)','FontSize',16);
+%     legend(han(1:5),'LC Model','PC Model','MV-LFC','M3V-LFC','CS-LFC');            
+          
+ 
+    
+    linewidth=1;
+    MarkerSize = 6;
+    figure();
     hold on
-    han(1,1)=plot(x_label, acc_LFC,'-gs','LineWidth',linewidth,'MarkerFaceColor','g');
-    han(2,1)=plot(x_label, acc_PC,'-bs','LineWidth',linewidth,'MarkerFaceColor','b');
-    han(3,1)=plot(x_label, acc_MV,'-cs','LineWidth',linewidth,'MarkerFaceColor','c');
-    han(4,1)=plot(x_label, acc_M3V,'-ks','LineWidth',linewidth,'MarkerFaceColor','k');
-    han(5,1)=plot(x_label, acc_Soft_LCM,'-rs','LineWidth',linewidth,'MarkerFaceColor','r');
-%     han(6,1)=plot(x_label, acc_MV_Probability,'--m+','LineWidth',linewidth,'MarkerFaceColor','m');
-%     han(7,1)=plot(x_label, acc_DS_Estimator,':mx','LineWidth',linewidth,'MarkerFaceColor','m');
+    han(1,1)=plot(x_label, acc_MV,'--k','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+    han(2,1)=plot(x_label, acc_M3V,'-k^','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+    han(3,1)=plot(x_label, acc_LFC,'--ko','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+    han(4,1)=plot(x_label, acc_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
+    han(5,1)=plot(x_label, acc_Soft_LCM,'-k','LineWidth',linewidth);
+    le=legend(han(1:5),'LC Model','PC Model','MV-LFC','M3V-LFC','CS-LFC'); 
+
+    set(le,'Box','off');
+    set(le,'FontSize',11)
 
     title(title_name,'FontSize',16)
-    xlabel('# of random annotators / # of normal annotators','FontSize',16);
+    xlabel('# random annotators / # real annotators','FontSize',16);
     ylabel('The test accuracy(%)','FontSize',16);
-    legend(han(1:5),'LC Model','PC Model','MV-LFC','M3V-LFC','CS-LFC');            
-          
-                
+               
+              
+    
+    
+    
 %     accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_MV_Probability,acc_DS_Estimator,acc_Soft_LCM]
 %     std_result=[std_MV,std_M3V,std_LFC,std_PC,std_MV_Probability,std_DS_Estimator,std_Soft_LCM]
 %     file_name=sprintf('%s%s',output_file_dir,'plot_data.mat');
