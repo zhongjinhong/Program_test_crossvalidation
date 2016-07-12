@@ -190,6 +190,6 @@ function [W]=LCM(X,Y,svm_para)
     end
     
     
-%     save('LCM_debug.mat','*');
+    save('LCM_debug.mat','*');
     
 end
