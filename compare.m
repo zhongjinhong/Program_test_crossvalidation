@@ -101,8 +101,8 @@ function [  ] = compare( experiment_num )
             W_M3V( (num-begin_num)*total_repeat_num+repeat_num,: )=M3V(X,Y,svm_para);
             Time_M3V ((num-begin_num)*total_repeat_num+repeat_num)= toc;          
             tic
-            [W_LCM( (num-begin_num)*total_repeat_num+repeat_num,: ),count( 1:2*n,(num-begin_num)*total_repeat_num+repeat_num )]=LCM_test_linear(X,Y,svm_para);
-            Time_Soft_LCM((num-begin_num)*total_repeat_num+repeat_num)= toc;
+%             [W_LCM( (num-begin_num)*total_repeat_num+repeat_num,: ),count( 1:2*n,(num-begin_num)*total_repeat_num+repeat_num )]=LCM_test_linear(X,Y,svm_para);
+%             Time_Soft_LCM((num-begin_num)*total_repeat_num+repeat_num)= toc;
 
             
             W_LCM1( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
@@ -182,8 +182,8 @@ function [  ] = compare( experiment_num )
         save(file_name,'W_MV');
         file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
         save(file_name,'W_M3V');      
-        file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
-        save(file_name,'W_LCM');
+%         file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
+%         save(file_name,'W_LCM');
         
         file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
         save(file_name,'W_LCM1');
