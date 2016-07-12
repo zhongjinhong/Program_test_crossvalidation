@@ -71,7 +71,24 @@ function [  ] = compare( experiment_num )
             
             n=size(X,1);
             expert_num=size(Y,2);
-            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%           
+            if experiment_num == 32
+                filtered_annotator =[3 7 15 18 47 58 63 66 68 69 75 80 93 111 151 153 158 159 184 193 194 201 204 210 229];
+                filter_num = size(filtered_annotator,2);
+                for j = 1:filter_num
+                    t = filtered_annotator(j);
+                    for i = 1:n
+                        if Y(i,t) ~= -2
+                            if(rand()>0.5)
+                                Y(i,t) = 1;
+                            else
+                                Y(i,t) = -1;
+                            end
+                        end
+                    end
+                end  
+            end 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
 %             tic
 %             W_MV( (num-begin_num)*total_repeat_num+repeat_num,: )=Majority_Method(X,Y,svm_para);            
 %             Time_MV ((num-begin_num)*total_repeat_num+repeat_num)= toc;           
@@ -79,12 +96,11 @@ function [  ] = compare( experiment_num )
 %             W_M3V( (num-begin_num)*total_repeat_num+repeat_num,: )=M3V(X,Y,svm_para);
 %             Time_M3V ((num-begin_num)*total_repeat_num+repeat_num)= toc;          
 %             tic
-            [W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ),count( 1:2*n,(num-begin_num)*total_repeat_num+repeat_num )]=LCM_test_linear(X,Y,svm_para);
+%             [W_LCM( (num-begin_num)*total_repeat_num+repeat_num,: ),count( 1:2*n,(num-begin_num)*total_repeat_num+repeat_num )]=LCM_test_linear(X,Y,svm_para);
 %             Time_Soft_LCM((num-begin_num)*total_repeat_num+repeat_num)= toc;
 
-            
-%             W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
-%             W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM_compare(X,Y,svm_para);  
+            W_LCM1( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
+            W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM_compare(X,Y,svm_para);  
 
             
             for i=1:n
@@ -119,9 +135,6 @@ function [  ] = compare( experiment_num )
             disp(dis_information);
             pause(1)
 
-
-            
-            
             
             
 %             file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
@@ -134,7 +147,9 @@ function [  ] = compare( experiment_num )
 %             save(file_name,'W_M3V');      
 %             file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
 %             save(file_name,'W_LCM');
-% 
+
+%             file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
+%             save(file_name,'W_LCM1');
 % 
 %             file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
 %             save(file_name,'W_MV_Probability');
@@ -162,9 +177,9 @@ function [  ] = compare( experiment_num )
 %         save(file_name,'W_M3V');      
 %         file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
 %         save(file_name,'W_LCM');
-%         
-%         file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
-%         save(file_name,'W_LCM1');
+        
+        file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
+        save(file_name,'W_LCM1');
         file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
         save(file_name,'W_LCM2');        
 %         

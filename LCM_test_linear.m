@@ -1,9 +1,9 @@
 function [W,count]=LCM_test_linear(X,Y,svm_para)
-
     K=10;emusinon = 10^(-20);
-    [n,d]=size(X);expert_num=size(Y,2);
+    [n,d]=size(X);expert_num=size(Y,2);  
+
     X_temp=zeros(n,d);
-    Y_temp=zeros(n,1);
+    Y_temp=zeros(n,1);    
     for t=1:expert_num
         A(t).Index=zeros(n,K);
         for k=1:K
@@ -46,6 +46,8 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
     for t=1:expert_num
         available_num = 0;
         total_accuracy = 0;
+        
+        
         for k=1:K
             if size(model(k,t).Label,1) == 1
                 predict_lable(k,t).label = ones(n,1)*model(k,t).Label;
@@ -60,8 +62,8 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
             balance = sum( predict_lable(k,t).label == 1)/n;
 
 
-            if balance >0.9 || balance < 0.1
-                accuracy_bagging(k,t) = 0.5;
+            if balance ==1 || balance == 0
+                accuracy_bagging(k,t) = 222;
                 continue;
             end
 
@@ -81,7 +83,7 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
             end
 
 
-            if(Numm(k,t)>=10)
+            if(Numm(k,t)>=5)
                 p = accuracy_bagging(k,t)/Numm(k,t);
                 accuracy_bagging(k,t) = accuracy_bagging(k,t)/Numm(k,t);
                 available_num = available_num + 1;
@@ -90,12 +92,17 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
                 accuracy_bagging(k,t) = 0.5;
             end
 
+            
+%             if balance >0.9 || balance < 0.1
+%                 if accuracy_bagging(k,t)~=0.5
+%                     accuracy_bagging(k,t) = 333;
+%                 end
+%                 Numm(k,t) = 0;
+%             end            
+            
+            
+            
         end
-%         if available_num >= 0.1*K
-%             accuracy_annotator(1, t) = total_accuracy/available_num;
-%         else
-%             accuracy_annotator(1, t) = -1;
-%         end
 
     end
 
@@ -123,13 +130,13 @@ function [W,count]=LCM_test_linear(X,Y,svm_para)
                 continue;
             end
 
-%             p1 = 1;
-%             p0 = 1;
-            p1 = pz_positive;
-            p0 = pz_negative;
+            p1 = 1;
+            p0 = 1;
+%             p1 = pz_positive;
+%             p0 = pz_negative;
 
             for k=1:K
-                if(Numm(k,t)>=10)
+                if(Numm(k,t)>=5)
                     if(predict_lable(k,t).label(i,1)==1)
                         p1 = p1*(accuracy_bagging(k,t)+emusinon);
                         p0 = p0*(1-accuracy_bagging(k,t)+emusinon);

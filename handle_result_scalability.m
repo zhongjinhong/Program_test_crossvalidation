@@ -4,7 +4,7 @@ function [  ] = handle_result_scalability( experiment_num )
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     total_repeat_num=2;begin_num=10;end_num=11;count=zeros(end_num*10,(end_num-begin_num+1)*total_repeat_num); 
 %     total_repeat_num = 10;
-    end_num = 6;
+%     end_num = 6;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 
     
@@ -17,9 +17,7 @@ function [  ] = handle_result_scalability( experiment_num )
     load(file_name);
     file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
     load(file_name);
-%     file_name=sprintf('%s%s',output_file_dir,'W_YAN.mat');
-%     load(file_name);   
-    %%%%%%%%%%%%%%%%%
+
     file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
     load(file_name);
 
@@ -28,8 +26,12 @@ function [  ] = handle_result_scalability( experiment_num )
     file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
     load(file_name);
     
-    
-    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%     file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
+%     load(file_name);
+%     W_LCM = W_LCM1;
+%     total_repeat_num = size(W_LCM,1);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     Result_LFC=zeros(total_repeat_num*(end_num-begin_num+1),1);
     Result_PC = Result_LFC;
     Result_MV = Result_LFC;
@@ -202,27 +204,10 @@ function [  ] = handle_result_scalability( experiment_num )
         std_MV_Probability(i)=std(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
         std_DS_Estimator(i)=std(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));        
 
-%         auc_LFC(i)=mean(AUC_LFC( (i-1)*repeat_num+1:i*repeat_num));
-%         auc_PC(i)=mean(AUC_PC( (i-1)*repeat_num+1:i*repeat_num));
-%         auc_MV(i)=mean(AUC_MV( (i-1)*repeat_num+1:i*repeat_num));
-%         auc_M3V(i)=mean(AUC_M3V( (i-1)*repeat_num+1:i*repeat_num));
-%         auc_Soft_LCM(i)=mean( AUC_LCM( (i-1)*repeat_num+1:i*repeat_num) );
-%         auc_MV_Probability(i)=mean(AUC_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
-%         auc_DS_Estimator(i)=mean(AUC_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));
     end
     linewidth=2;
     x_label = 0:end_num-1;
-%     figure()
-%     hold on
-%     han(1,1)=plot(x_label, acc_LFC,'-gs','LineWidth',linewidth,'MarkerFaceColor','g');
-%     han(2,1)=plot(x_label, acc_PC,'-bs','LineWidth',linewidth,'MarkerFaceColor','b');
-%     han(3,1)=plot(x_label, acc_MV,'-cs','LineWidth',linewidth,'MarkerFaceColor','c');
-%     han(4,1)=plot(x_label, acc_M3V,'-ks','LineWidth',linewidth,'MarkerFaceColor','k');
-%     han(5,1)=plot(x_label, acc_Soft_LCM,'-rs','LineWidth',linewidth,'MarkerFaceColor','r');
-%     title(title_name,'FontSize',16)
-%     xlabel('# of random annotators / # of normal annotators','FontSize',16);
-%     ylabel('The test accuracy(%)','FontSize',16);
-%     legend(han(1:5),'LC Model','PC Model','MV-LFC','M3V-LFC','CS-LFC');            
+        
           
  
     

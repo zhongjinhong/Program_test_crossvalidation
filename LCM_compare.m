@@ -1,9 +1,9 @@
 function [W]=LCM_compare(X,Y,svm_para)
-
     K=10;emusinon = 10^(-20);
-    [n,d]=size(X);expert_num=size(Y,2);
+    [n,d]=size(X);expert_num=size(Y,2);  
+
     X_temp=zeros(n,d);
-    Y_temp=zeros(n,1);
+    Y_temp=zeros(n,1);    
     for t=1:expert_num
         A(t).Index=zeros(n,K);
         for k=1:K
@@ -41,14 +41,18 @@ function [W]=LCM_compare(X,Y,svm_para)
 
     num_positive = zeros(n,expert_num);
     num_negative = num_positive;
+%     accuracy_annotator = zeros(1,expert_num);
     X_sparse = sparse([X ones(n,1)]);
     for t=1:expert_num
         available_num = 0;
         total_accuracy = 0;
+        
+        
         for k=1:K
             if size(model(k,t).Label,1) == 1
                 predict_lable(k,t).label = ones(n,1)*model(k,t).Label;
             elseif size(model(k,t).Label,1) == 0
+                accuracy_bagging(k,t) = 0.5;
                 continue;
             else
                 [predict_label_temp,decision,accuracy]=predict(ones(n,1),X_sparse,model(k,t));
@@ -58,7 +62,8 @@ function [W]=LCM_compare(X,Y,svm_para)
             balance = sum( predict_lable(k,t).label == 1)/n;
 
 
-            if balance == 1 || balance == 0
+            if balance ==1 || balance == 0
+                accuracy_bagging(k,t) = 0.5;
                 continue;
             end
 
@@ -83,8 +88,10 @@ function [W]=LCM_compare(X,Y,svm_para)
                 accuracy_bagging(k,t) = accuracy_bagging(k,t)/Numm(k,t);
                 available_num = available_num + 1;
                 total_accuracy = total_accuracy + p;
-            end
-
+            else
+                accuracy_bagging(k,t) = 0.5;
+            end      
+            
         end
 
     end
@@ -100,7 +107,6 @@ function [W]=LCM_compare(X,Y,svm_para)
 %         end
 %     end
 
-
 %%%%%%%%%%%%%Calculate each label's weight
     Con=zeros(n,expert_num);
     for i = 1:n
@@ -115,7 +121,7 @@ function [W]=LCM_compare(X,Y,svm_para)
 
             p1 = 1;
             p0 = 1;
-
+            
             for k=1:K
                 if(Numm(k,t)>=5)
                     if(predict_lable(k,t).label(i,1)==1)
@@ -172,4 +178,5 @@ function [W]=LCM_compare(X,Y,svm_para)
     if(Model.Label(1,1)~=1)
         W=-W;
     end
+
 end

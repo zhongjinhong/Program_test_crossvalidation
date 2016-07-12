@@ -10,6 +10,7 @@ function [  ] = compare( experiment_num )
                     load(file_name);  
                     file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_',num*step_num,'_',repeat_num,'.mat');
                     load(file_name);  
+       
                 case {11}
                     file_name=sprintf('%s%s',input_file_dir,'X_1000_1.mat');
                     load(file_name);  
@@ -71,6 +72,27 @@ function [  ] = compare( experiment_num )
             
             n=size(X,1);
             expert_num=size(Y,2);
+
+
+            
+            if experiment_num == 32
+                filtered_annotator =[3 7 15 18 47 58 63 66 68 69 75 80 93 111 151 153 158 159 184 193 194 201 204 210 229];
+                filter_num = size(filtered_annotator,2);
+                for j = 1:filter_num
+                    t = filtered_annotator(j);
+                    for i = 1:n
+                        if Y(i,t) ~= -2
+                            if(rand()>0.5)
+                                Y(i,t) = 1;
+                            else
+                                Y(i,t) = -1;
+                            end
+                        end
+                    end
+                end  
+            end            
+            
+            
             
             tic
             W_MV( (num-begin_num)*total_repeat_num+repeat_num,: )=Majority_Method(X,Y,svm_para);            
