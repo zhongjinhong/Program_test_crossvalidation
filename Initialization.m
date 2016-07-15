@@ -69,27 +69,27 @@ switch experiment_num
         
         
 
-    case 10
-        input_file_dir ='../Input Data/Real Data with spammers/latent model/';
-        output_file_dir='../Output Data/Real Data with spammers/latent model/';
-        total_repeat_num=20;begin_num=1;end_num=10;step_num = 5;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Robustness to low-quality annotators(Raykar''s Data)';
-    case 13
-        input_file_dir ='../Input Data/Real Data with spammers/expertise_difficult_model/';
-        output_file_dir='../Output Data/Real Data with spammers/expertise_difficult_model/';
-        total_repeat_num=20;begin_num=1;end_num=10;step_num = 5;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Robustness to low-quality annotators(Whitehill''s Data)';           
-        
-    case 11
-        input_file_dir='../Input Data/Real Data/Real Label/';
-        output_file_dir='../Output Data/Real Data Time/';
-        total_repeat_num=2;begin_num=1;end_num=10;step_num = 5;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num); 
-        title_name='Scalability for annotator number';
-    case 12%%% for test
-        input_file_dir='../Input Data/Real_Data_AAAI_balance/Real Label/';
-        output_file_dir='../Output Data/Real_Data_AAAI_balance/Real Label/';
-        total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-        title_name='NER(Real Data)';   
+%     case 10
+%         input_file_dir ='../Input Data/Real Data with spammers/latent model/';
+%         output_file_dir='../Output Data/Real Data with spammers/latent model/';
+%         total_repeat_num=20;begin_num=1;end_num=10;step_num = 5;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
+%         title_name='Robustness to low-quality annotators(Raykar''s Data)';
+%     case 13
+%         input_file_dir ='../Input Data/Real Data with spammers/expertise_difficult_model/';
+%         output_file_dir='../Output Data/Real Data with spammers/expertise_difficult_model/';
+%         total_repeat_num=20;begin_num=1;end_num=10;step_num = 5;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
+%         title_name='Robustness to low-quality annotators(Whitehill''s Data)';           
+%         
+%     case 11
+%         input_file_dir='../Input Data/Real Data/Real Label/';
+%         output_file_dir='../Output Data/Real Data Time/';
+%         total_repeat_num=2;begin_num=1;end_num=10;step_num = 5;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num); 
+%         title_name='Scalability for annotator number';
+%     case 12%%% for test
+%         input_file_dir='../Input Data/Real_Data_AAAI_balance/Real Label/';
+%         output_file_dir='../Output Data/Real_Data_AAAI_balance/Real Label/';
+%         total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
+%         title_name='NER(Real Data)';   
         
     case 21 %%total_repeat_num=10 needs about 12h
         input_file_dir='../Input Data/Real Data/Clustering/';

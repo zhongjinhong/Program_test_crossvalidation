@@ -38,7 +38,7 @@ function [w0]=LFC(X,Y)
     while t<=100
         [ai,bi]=calculate_ai_bi(alpha,beta,Y);
         for i=1:n
-            miu(i)=ai(i,1)*pi(i,1)/( ai(i,1)*pi(i,1)+bi(i,1)*(1-pi(i,1))+emusinou );
+            miu(i)=(ai(i,1)*pi(i,1)+emusinou)/( ai(i,1)*pi(i,1)+bi(i,1)*(1-pi(i,1))+2*emusinou );
         end
 
         %%%%%% modified %%%%%%%%%%%%%%

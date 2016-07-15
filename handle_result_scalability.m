@@ -31,6 +31,7 @@ function [  ] = handle_result_scalability( experiment_num )
 %     load(file_name);
 %     W_LCM = W_LCM1;
 %     total_repeat_num = size(W_LCM,1);
+    end_num = size(W_LFC,1)/total_repeat_num;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     Result_LFC=zeros(total_repeat_num*(end_num-begin_num+1),1);
     Result_PC = Result_LFC;
@@ -183,10 +184,10 @@ function [  ] = handle_result_scalability( experiment_num )
     end
     
     
-    n=size(Result_LCM,1);
-%     repeat_num = n;
-    n=n/repeat_num;
-    for i=1:n
+%     n=size(Result_LCM,1);
+% %     repeat_num = n;
+%     n=n/repeat_num;
+    for i=1:end_num
         acc_LFC(i)=mean(Result_LFC( (i-1)*repeat_num+1:i*repeat_num));
         acc_PC(i)=mean(Result_PC( (i-1)*repeat_num+1:i*repeat_num));
         acc_MV(i)=mean(Result_MV( (i-1)*repeat_num+1:i*repeat_num));
@@ -220,7 +221,7 @@ function [  ] = handle_result_scalability( experiment_num )
     han(3,1)=plot(x_label, acc_LFC,'--ko','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
     han(4,1)=plot(x_label, acc_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
     han(5,1)=plot(x_label, acc_Soft_LCM,'-k','LineWidth',linewidth);
-    le=legend(han(1:5),'LC Model','PC Model','MV-LFC','M3V-LFC','CS-LFC'); 
+    le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC'); 
 
     set(le,'Box','off');
     set(le,'FontSize',11)
