@@ -344,6 +344,9 @@ function [  ] = handle_result( experiment_num )
         std_M3V(i)=std(Result_M3V( (i-1)*repeat_num+1:i*repeat_num));
 
         std_Soft_LCM(i)=std( Result_LCM( (i-1)*repeat_num+1:i*repeat_num) );
+        std_Soft_LCM1(i)=std( Result_LCM1( (i-1)*repeat_num+1:i*repeat_num) );
+        std_Soft_LCM2(i)=std( Result_LCM2( (i-1)*repeat_num+1:i*repeat_num) );
+        
         std_MV_Probability(i)=std(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
         std_DS_Estimator(i)=std(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));        
         
@@ -353,17 +356,21 @@ function [  ] = handle_result( experiment_num )
 
     h=zeros(6,1);
     p=zeros(6,1);
-    [h(1),p(1),ci,status]=ttest(Result_LCM,Result_MV);
-    [h(2),p(2),ci,status]=ttest(Result_LCM,Result_M3V);
-    [h(3),p(3),ci,status]=ttest(Result_LCM,Result_LFC);
-    [h(4),p(4),ci,status]=ttest(Result_LCM,Result_PC);
-    [h(5),p(5),ci,status]=ttest(Result_LCM,Result_MV_Probability);
-    [h(6),p(6),ci,status]=ttest(Result_LCM,Result_DS_Estimator);
+    [h(1),p(1),ci,status]=ttest(Result_LCM1,Result_MV);
+    [h(2),p(2),ci,status]=ttest(Result_LCM1,Result_M3V);
+    [h(3),p(3),ci,status]=ttest(Result_LCM1,Result_LFC);
+    [h(4),p(4),ci,status]=ttest(Result_LCM1,Result_PC);
+    [h(5),p(5),ci,status]=ttest(Result_LCM1,Result_MV_Probability);
+    [h(6),p(6),ci,status]=ttest(Result_LCM1,Result_DS_Estimator);
     
+    accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_Soft_LCM1]
+    std_result      = [std_MV,std_M3V,std_LFC,std_PC,std_Soft_LCM1]    
     
+    accuracy_result = [acc_MV_Probability,acc_DS_Estimator,acc_Soft_LCM2,acc_Soft_LCM1]
+    std_result      = [std_MV_Probability,std_DS_Estimator,std_Soft_LCM2,std_Soft_LCM1]
     
-    accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_MV_Probability,acc_DS_Estimator,acc_Soft_LCM]
-    std_result=[std_MV,std_M3V,std_LFC,std_PC,std_MV_Probability,std_DS_Estimator,std_Soft_LCM]
+    [h12,p12,ci12,status12]=ttest(Result_LCM1,Result_LCM2);
+    
     file_name=sprintf('%s%s',output_file_dir,'plot_data.mat');
     save(file_name,'*');
 end

@@ -174,7 +174,7 @@ function [  ] = compare_test_LFC( experiment_num )
         
         end
 
-        file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
+        file_name=sprintf('%s%s',output_file_dir,'W_LFC1.mat');
         save(file_name,'W_LFC');
 %         file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
 %         save(file_name,'W_PC');
