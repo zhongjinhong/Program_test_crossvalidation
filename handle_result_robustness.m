@@ -30,8 +30,8 @@ function [  ] = handle_result_robustness( experiment_num )
     file_name=sprintf('%s%s',output_file_dir,'W_LFC1.mat');
     load(file_name);
 %     W_LCM = W_LCM1;
-    total_repeat_num = size(W_LFC,1);
-    end_num = size(W_LFC,1)/total_repeat_num;
+%     total_repeat_num = size(W_LFC,1);
+%     end_num = size(W_LFC,1)/total_repeat_num;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     Result_LFC=zeros(total_repeat_num*(end_num-begin_num+1),1);
 %     Result_PC = Result_LFC;
