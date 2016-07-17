@@ -108,7 +108,7 @@ function [  ] = buchong_lcm1_time( experiment_num )
 
             tic
             W_LCM1( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para); 
-            Time_Soft_LCM1((num-begin_num)*total_repeat_num+repeat_num)= toc;
+            Time_Soft_LCM((num-begin_num)*total_repeat_num+repeat_num)= toc;
 %             W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM_compare(X,Y,svm_para);  
             
 
