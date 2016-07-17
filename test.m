@@ -672,3 +672,28 @@ AUC_PC(1) = trapz(fpr,tpr);
 
 save('All_finished','*');
 
+
+for i = 1:20
+    for j = 1:5
+        num = (i-1)*5 + j;
+        A(i,j) = mean_result_test(num);
+    end
+end
+
+
+for i = 1:5
+    B(:,i) = A(:,5)-A(:,i);
+end
+
+
+A_rank=A;
+A_sort = sort(A,2);
+for i = 1:20
+    for j = 1:4
+        index = find(A_sort(i,:) == A(i,j));
+        A_rank(i,j) = index(1,1);
+    end
+end
+
+
+

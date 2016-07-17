@@ -33,7 +33,7 @@ function [  ] = handle_result( experiment_num )
     Result_LFC=zeros(total_iteration_num,1);
     for t=1:total_iteration_num    
         repeat_num = ceil(t/total_repeat_num);
-        k = mod(t, total_repeat_num)+1;
+        k = mod(t-1, total_repeat_num)+1;
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
         load(file_name);
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
@@ -64,7 +64,7 @@ function [  ] = handle_result( experiment_num )
     Result_PC=zeros(total_iteration_num,1);
     for t=1:total_iteration_num  
         repeat_num = ceil(t/total_repeat_num);
-        k = mod(t, total_repeat_num)+1;
+        k = mod(t-1, total_repeat_num)+1;
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
         load(file_name);
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
@@ -95,7 +95,7 @@ function [  ] = handle_result( experiment_num )
     Result_MV=zeros(total_iteration_num,1);
     for t=1:total_iteration_num 
        repeat_num = ceil(t/total_repeat_num);
-        k = mod(t, total_repeat_num)+1;
+        k = mod(t-1, total_repeat_num)+1;
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
         load(file_name);
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
@@ -127,7 +127,7 @@ function [  ] = handle_result( experiment_num )
     Result_M3V=zeros(total_iteration_num,1);
     for t=1:total_iteration_num   
         repeat_num = ceil(t/total_repeat_num);
-        k = mod(t, total_repeat_num)+1;
+        k = mod(t-1, total_repeat_num)+1;
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
         load(file_name);
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
@@ -158,7 +158,7 @@ function [  ] = handle_result( experiment_num )
     Result_LCM=zeros(total_iteration_num,1);
     for t=1:total_iteration_num
         repeat_num = ceil(t/total_repeat_num);
-        k = mod(t, total_repeat_num)+1;
+        k = mod(t-1, total_repeat_num)+1;
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
         load(file_name);
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
@@ -189,7 +189,7 @@ function [  ] = handle_result( experiment_num )
     Result_LCM1=zeros(total_iteration_num,1);
     for t=1:total_iteration_num
         repeat_num = ceil(t/total_repeat_num);
-        k = mod(t, total_repeat_num)+1;
+        k = mod(t-1, total_repeat_num)+1;
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
         load(file_name);
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
@@ -220,7 +220,7 @@ function [  ] = handle_result( experiment_num )
     Result_LCM2=zeros(total_iteration_num,1);
     for t=1:total_iteration_num
         repeat_num = ceil(t/total_repeat_num);
-        k = mod(t, total_repeat_num)+1;
+        k = mod(t-1, total_repeat_num)+1;
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
         load(file_name);
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
@@ -252,7 +252,7 @@ function [  ] = handle_result( experiment_num )
     Result_MV_Probability=zeros(total_iteration_num,1);
     for t=1:total_iteration_num    
         repeat_num = ceil(t/total_repeat_num);
-        k = mod(t, total_repeat_num)+1;
+        k = mod(t-1, total_repeat_num)+1;
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
         load(file_name);
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
@@ -284,7 +284,7 @@ function [  ] = handle_result( experiment_num )
     Result_DS_Estimator=zeros(total_iteration_num,1);
     for t=1:total_iteration_num   
         repeat_num = ceil(t/total_repeat_num);
-        k = mod(t, total_repeat_num)+1;
+        k = mod(t-1, total_repeat_num)+1;
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
         load(file_name);
         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
@@ -354,6 +354,23 @@ function [  ] = handle_result( experiment_num )
 
     end
 
+
+    
+    MV_result = sprintf('%.4f+%.4f', acc_MV,std_MV);
+    M3V_result = sprintf('%.4f+%.4f', acc_M3V,std_M3V);
+    LFC_result = sprintf('%.4f+%.4f', acc_LFC,std_LFC);
+    PC_result = sprintf('%.4f+%.4f', acc_PC,std_PC);
+    Soft_LCM1_result = sprintf('%.4f+%.4f', acc_Soft_LCM1,std_Soft_LCM1);
+    
+    MV_Probability_result = sprintf('%.4f+%.4f', acc_MV_Probability,std_MV_Probability);
+    DS_Estimator_result = sprintf('%.4f+%.4f', acc_DS_Estimator,std_DS_Estimator);
+    Soft_LCM2_result = sprintf('%.4f+%.4f', acc_Soft_LCM2,std_Soft_LCM2);
+     
+  
+    result1 = {MV_result,M3V_result,LFC_result,PC_result,Soft_LCM1_result}
+    result2 = {MV_Probability_result,DS_Estimator_result,Soft_LCM2_result,Soft_LCM1_result}   
+    
+    
     h=zeros(6,1);
     p=zeros(6,1);
     [h(1),p(1),ci,status]=ttest(Result_LCM1,Result_MV);
@@ -362,14 +379,15 @@ function [  ] = handle_result( experiment_num )
     [h(4),p(4),ci,status]=ttest(Result_LCM1,Result_PC);
     [h(5),p(5),ci,status]=ttest(Result_LCM1,Result_MV_Probability);
     [h(6),p(6),ci,status]=ttest(Result_LCM1,Result_DS_Estimator);
+    [h(7),p(7),ci,status]=ttest(Result_LCM1,Result_LCM2);
     
-    accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_Soft_LCM1]
-    std_result      = [std_MV,std_M3V,std_LFC,std_PC,std_Soft_LCM1]    
+%     accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_Soft_LCM1]
+%     std_result      = [std_MV,std_M3V,std_LFC,std_PC,std_Soft_LCM1]    
     
-    accuracy_result = [acc_MV_Probability,acc_DS_Estimator,acc_Soft_LCM2,acc_Soft_LCM1]
-    std_result      = [std_MV_Probability,std_DS_Estimator,std_Soft_LCM2,std_Soft_LCM1]
+%     accuracy_result = [acc_MV_Probability,acc_DS_Estimator,acc_Soft_LCM2,acc_Soft_LCM1]
+%     std_result      = [std_MV_Probability,std_DS_Estimator,std_Soft_LCM2,std_Soft_LCM1]
     
-    [h12,p12,ci12,status12]=ttest(Result_LCM1,Result_LCM2);
+%     [h12,p12,ci12,status12]=ttest(Result_LCM1,Result_LCM2);
     
     file_name=sprintf('%s%s',output_file_dir,'plot_data.mat');
     save(file_name,'*');
