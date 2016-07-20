@@ -10,6 +10,15 @@ function [  ] = handle_result_scalability( experiment_num )
         Time_Soft_LCM1( (i-1)*10+1:i*10 ) = Time_Soft_LCM(i);
     end
     Time_Soft_LCM = Time_Soft_LCM1;
+    
+    
+    file_name=sprintf('%s%s',output_file_dir,'Time_LFC1.mat');
+    load(file_name);
+    Time_LFC1 = Time_Soft_LCM;
+    for i = 1:110
+        Time_LFC1( (i-1)*10+1:i*10 ) = Time_LFC(i);
+    end
+    Time_LFC = Time_LFC1;    
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     n=size(Time_PC,2);
     n=n/total_repeat_num;
