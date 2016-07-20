@@ -6,9 +6,6 @@ function [  ] = handle_result_robustness( experiment_num )
 %     total_repeat_num = 10;
 %     end_num = 6;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
-
-    
-
     file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
     load(file_name);
     file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
@@ -17,25 +14,22 @@ function [  ] = handle_result_robustness( experiment_num )
     load(file_name);
     file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
     load(file_name);
-
     file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
     load(file_name);
-
     file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
     load(file_name);
     file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
     load(file_name);
-    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
-%     file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
-%     load(file_name);
+    file_name=sprintf('%s%s',output_file_dir,'W_LFC1.mat');
+    load(file_name);
 %     W_LCM = W_LCM2;
 % 
-%     file_name=sprintf('%s%s',output_file_dir,'W_LFC3.mat');
-%     load(file_name);
-%     W_LCM = W_LCM1;
+    file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
+    load(file_name);
+    W_LCM = W_LCM1;
 %     total_repeat_num = size(W_LFC,1);
-    end_num = 1;
+%     end_num = 10;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     Result_LFC=zeros(total_repeat_num*(end_num-begin_num+1),1);
     Result_PC = Result_LFC;
@@ -129,7 +123,7 @@ function [  ] = handle_result_robustness( experiment_num )
             end
             AUC_M3V(t) = trapz(fpr,tpr);
             Result_M3V(t)= Result_M3V(t)/n;            
-%             
+             
             for i=1:n
                 predict_label(i,1)=W_LCM(t,:)*X_test(i,:)';
                 if(predict_label(i,1)*Y_test(i)>0)
@@ -146,41 +140,41 @@ function [  ] = handle_result_robustness( experiment_num )
             end
             AUC_LCM(t) = trapz(fpr,tpr);
             Result_LCM(t)= Result_LCM(t)/n;            
-            
-            
-            for i=1:n
-                predict_label(i,1)=W_MV_Probability(t,:)*X_test(i,:)';
-                if(predict_label(i,1)*Y_test(i)>0)
-                    Result_MV_Probability(t)=Result_MV_Probability(t)+1;
-                elseif(predict_label(i,1)*Y_test(i)==0)
-                    Result_MV_Probability(t)=Result_MV_Probability(t)+0.5;
-                end
-            end
-            [tpr,fpr] = roc(target,predict_label');
-            point_num = size(tpr,2);
-            if tpr(point_num)~=1 || fpr(point_num)~=1
-                tpr(1,point_num+1) = 1;
-                fpr(1,point_num+1) = 1;
-            end
-            AUC_MV_Probability(t) = trapz(fpr,tpr);
-            Result_MV_Probability(t)= Result_MV_Probability(t)/n;            
-            
-            for i=1:n
-                predict_label(i,1)=W_DS_Estimator(t,:)*X_test(i,:)';
-                if(predict_label(i,1)*Y_test(i)>0)
-                    Result_DS_Estimator(t)=Result_DS_Estimator(t)+1;
-                elseif(predict_label(i,1)*Y_test(i)==0)
-                    Result_DS_Estimator(t)=Result_DS_Estimator(t)+0.5;
-                end
-            end
-            [tpr,fpr] = roc(target,predict_label');
-            point_num = size(tpr,2);
-            if tpr(point_num)~=1 || fpr(point_num)~=1
-                tpr(1,point_num+1) = 1;
-                fpr(1,point_num+1) = 1;
-            end
-            AUC_DS_Estimator(t) = trapz(fpr,tpr);
-            Result_DS_Estimator(t)= Result_DS_Estimator(t)/n;
+%             
+%             
+%             for i=1:n
+%                 predict_label(i,1)=W_MV_Probability(t,:)*X_test(i,:)';
+%                 if(predict_label(i,1)*Y_test(i)>0)
+%                     Result_MV_Probability(t)=Result_MV_Probability(t)+1;
+%                 elseif(predict_label(i,1)*Y_test(i)==0)
+%                     Result_MV_Probability(t)=Result_MV_Probability(t)+0.5;
+%                 end
+%             end
+%             [tpr,fpr] = roc(target,predict_label');
+%             point_num = size(tpr,2);
+%             if tpr(point_num)~=1 || fpr(point_num)~=1
+%                 tpr(1,point_num+1) = 1;
+%                 fpr(1,point_num+1) = 1;
+%             end
+%             AUC_MV_Probability(t) = trapz(fpr,tpr);
+%             Result_MV_Probability(t)= Result_MV_Probability(t)/n;            
+%             
+%             for i=1:n
+%                 predict_label(i,1)=W_DS_Estimator(t,:)*X_test(i,:)';
+%                 if(predict_label(i,1)*Y_test(i)>0)
+%                     Result_DS_Estimator(t)=Result_DS_Estimator(t)+1;
+%                 elseif(predict_label(i,1)*Y_test(i)==0)
+%                     Result_DS_Estimator(t)=Result_DS_Estimator(t)+0.5;
+%                 end
+%             end
+%             [tpr,fpr] = roc(target,predict_label');
+%             point_num = size(tpr,2);
+%             if tpr(point_num)~=1 || fpr(point_num)~=1
+%                 tpr(1,point_num+1) = 1;
+%                 fpr(1,point_num+1) = 1;
+%             end
+%             AUC_DS_Estimator(t) = trapz(fpr,tpr);
+%             Result_DS_Estimator(t)= Result_DS_Estimator(t)/n;
             
             
             
@@ -188,9 +182,6 @@ function [  ] = handle_result_robustness( experiment_num )
     end
     
     
-%     n=size(Result_LCM,1);
-% %     repeat_num = n;
-%     n=n/repeat_num;
     for i=1:end_num
         acc_LFC(i)=mean(Result_LFC( (i-1)*repeat_num+1:i*repeat_num));
         acc_PC(i)=mean(Result_PC( (i-1)*repeat_num+1:i*repeat_num));
@@ -220,23 +211,21 @@ function [  ] = handle_result_robustness( experiment_num )
     MarkerSize = 6;
     figure();
     hold on
-%     han(1,1)=plot(x_label, acc_MV,'--k','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
-%     han(2,1)=plot(x_label, acc_M3V,'-k^','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+    han(1,1)=plot(x_label, acc_MV,'--k','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+    han(2,1)=plot(x_label, acc_M3V,'-k^','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
     han(3,1)=plot(x_label, acc_LFC,'--ko','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
-%     han(4,1)=plot(x_label, acc_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
+    han(4,1)=plot(x_label, acc_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
     han(5,1)=plot(x_label, acc_Soft_LCM,'-k','LineWidth',linewidth);
-%     le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC'); 
-
+    le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC'); 
+%     set(le,'YColor',[1 1 1],'XColor',[1 1 1]);
 %     set(le,'Box','off');
 %     set(le,'FontSize',11)
 
     title(title_name,'FontSize',16)
-    xlabel('# random annotators / # real annotators','FontSize',16);
+    xlabel('# random annotators / # normal annotators','FontSize',16);
     ylabel('The test accuracy(%)','FontSize',16);
-               
-              
-    
-    
+%     axis([0,10,0.6,1]);
+
     
 %     accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_MV_Probability,acc_DS_Estimator,acc_Soft_LCM]
 %     std_result=[std_MV,std_M3V,std_LFC,std_PC,std_MV_Probability,std_DS_Estimator,std_Soft_LCM]

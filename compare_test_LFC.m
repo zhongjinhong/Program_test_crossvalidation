@@ -2,6 +2,9 @@ function [  ] = compare_test_LFC( experiment_num )
     Initialization();
     svm_para=sprintf('%s','-s 0 -t 0');
  
+    %%%%%%%%%%%% for test the computational time%%%%%%%%%%%%
+    total_repeat_num = 10;
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     for num=begin_num:end_num
         for repeat_num=1:total_repeat_num
             switch experiment_num
@@ -174,8 +177,10 @@ function [  ] = compare_test_LFC( experiment_num )
         
         end
 
-        file_name=sprintf('%s%s',output_file_dir,'W_LFC1.mat');
-        save(file_name,'W_LFC');
+%         file_name=sprintf('%s%s',output_file_dir,'W_LFC1.mat');
+%         save(file_name,'W_LFC');
+        file_name=sprintf('%s%s',output_file_dir,'Time_LFC1.mat');
+        save(file_name,'Time_LFC');
 %         file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
 %         save(file_name,'W_PC');
 %         file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');

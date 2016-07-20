@@ -1,7 +1,7 @@
 function [  ] = handle_time( type )
-
 %     Initialization();
 %     data = zeros(4,7);
+    set(0,'defaultfigurecolor','w')
     if type <= 3
         switch type
             case 1
@@ -57,7 +57,7 @@ function [  ] = handle_time( type )
         colormap('Jet')
 
         title(title_name,'FontSize',16)
-        xlabel('Data Set','FontSize',16);
+%         xlabel('Data Set','FontSize',16);
         ylabel('Runing time(s)','FontSize',16);
     end
     
@@ -87,6 +87,7 @@ function [  ] = handle_time( type )
         name = {'Adult', 'Conect', 'Mushroom', 'DNA','Twitter Topic','Twitter NER'};
         l=legend('MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC');
         set(l,'YColor',[1 1 1],'XColor',[1 1 1]);
+%         set(0,'defaultfigurecolor','w')
 %         set(l,'Box','off');
         set(gca, 'XTickLabel', name);
         set(gca, 'FontSize', 12);
@@ -98,12 +99,5 @@ function [  ] = handle_time( type )
         xlabel('Data Set','FontSize',16);
         ylabel('Runing time(s)','FontSize',16);      
     end
-    
-    
-    
-    
 %  applyhatch(gcf,'/.\+x');
-
-
 end
-

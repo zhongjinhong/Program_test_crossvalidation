@@ -3,8 +3,15 @@ function [  ] = handle_result_scalability( experiment_num )
 
     file_name=sprintf('%s%s',output_file_dir,'Time.mat');
     load(file_name);
-
-    n=size(Time_Soft_LCM,2);
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    file_name=sprintf('%s%s',output_file_dir,'Time_LCM1.mat');
+    load(file_name);
+    for i = 1:110
+        Time_Soft_LCM1( (i-1)*10+1:i*10 ) = Time_Soft_LCM(i);
+    end
+    Time_Soft_LCM = Time_Soft_LCM1;
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    n=size(Time_PC,2);
     n=n/total_repeat_num;
     for i=1:n
         time_LFC(i)=mean(Time_LFC( (i-1)*total_repeat_num+1:i*total_repeat_num));
@@ -15,7 +22,11 @@ function [  ] = handle_result_scalability( experiment_num )
         time_MV_Probability(i)=mean(Time_MV_Probability( (i-1)*total_repeat_num+1:i*total_repeat_num));
         time_DS_Estimator(i)=mean(Time_DS_Estimator( (i-1)*total_repeat_num+1:i*total_repeat_num));
     end
-    x_label = 10:10:110;
+    if experiment_num == 48
+        x_label = 5:5:5*n;
+    else
+        x_label = 10:10:10*n;
+    end
     linewidth = 1;
     MarkerSize = 6;
     figure();
@@ -29,6 +40,7 @@ function [  ] = handle_result_scalability( experiment_num )
     le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC');
     set(le,'Box','off');
     set(le,'FontSize',11)
+    title(title_name,'FontSize',16)
 
     xlabel('The annotator number','FontSize',16);
     ylabel('The computing time (s)','FontSize',16);        
