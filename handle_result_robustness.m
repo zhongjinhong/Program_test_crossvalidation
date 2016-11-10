@@ -14,15 +14,12 @@ function [  ] = handle_result_robustness( experiment_num )
     load(file_name);
     file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
     load(file_name);
-    file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
-    load(file_name);
-    file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
-    load(file_name);
-    file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
-    load(file_name);
+%     file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
+%     load(file_name);
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
-    file_name=sprintf('%s%s',output_file_dir,'W_LFC1.mat');
-    load(file_name);
+%     file_name=sprintf('%s%s',output_file_dir,'W_LFC1.mat');
+%     load(file_name);
 %     W_LCM = W_LCM2;
 % 
     file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
@@ -36,8 +33,8 @@ function [  ] = handle_result_robustness( experiment_num )
     Result_MV = Result_LFC;
     Result_M3V = Result_LFC;
     Result_LCM = Result_LFC;
-    Result_MV_Probability = Result_LFC;
-    Result_DS_Estimator = Result_LFC;
+%     Result_MV_Probability = Result_LFC;
+%     Result_DS_Estimator = Result_LFC;
     for repeat_num = 1:total_repeat_num
         for num=begin_num:end_num
             file_name=sprintf('%s%s%d%s',input_file_dir,'X_test_',repeat_num,'.mat');
@@ -188,8 +185,8 @@ function [  ] = handle_result_robustness( experiment_num )
         acc_MV(i)=mean(Result_MV( (i-1)*repeat_num+1:i*repeat_num));
         acc_M3V(i)=mean(Result_M3V( (i-1)*repeat_num+1:i*repeat_num)); 
         acc_Soft_LCM(i)=mean( Result_LCM( (i-1)*repeat_num+1:i*repeat_num) );
-        acc_MV_Probability(i)=mean(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
-        acc_DS_Estimator(i)=mean(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));
+%         acc_MV_Probability(i)=mean(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
+%         acc_DS_Estimator(i)=mean(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));
 
 
         std_LFC(i)=std(Result_LFC( (i-1)*repeat_num+1:i*repeat_num));
@@ -197,8 +194,8 @@ function [  ] = handle_result_robustness( experiment_num )
         std_MV(i)=std(Result_MV( (i-1)*repeat_num+1:i*repeat_num));
         std_M3V(i)=std(Result_M3V( (i-1)*repeat_num+1:i*repeat_num));  
         std_Soft_LCM(i)=std( Result_LCM( (i-1)*repeat_num+1:i*repeat_num) );
-        std_MV_Probability(i)=std(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
-        std_DS_Estimator(i)=std(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));        
+%         std_MV_Probability(i)=std(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
+%         std_DS_Estimator(i)=std(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));        
 
     end
     linewidth=2;
@@ -216,9 +213,9 @@ function [  ] = handle_result_robustness( experiment_num )
     han(3,1)=plot(x_label, acc_LFC,'--ko','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
     han(4,1)=plot(x_label, acc_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
     han(5,1)=plot(x_label, acc_Soft_LCM,'-k','LineWidth',linewidth);
-    le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC'); 
+    le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC-SVM'); 
 %     set(le,'YColor',[1 1 1],'XColor',[1 1 1]);
-%     set(le,'Box','off');
+    set(le,'Box','off');
 %     set(le,'FontSize',11)
 
     title(title_name,'FontSize',16)

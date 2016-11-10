@@ -201,7 +201,7 @@ switch experiment_num
         input_file_dir ='../Input Data/Real Data Standar/Real Label/';
         output_file_dir='../Output Data/Real Data Random1/Real Label/';
         total_repeat_num=100;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-        title_name='Twitter Topic(Crowdsourcing)';  
+        title_name='Twitter Topic(Real Label)';  
 
                 
         
