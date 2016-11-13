@@ -68,28 +68,6 @@ switch experiment_num
         title_name='test_data(Whitehill''s Data)';         
         
         
-
-%     case 10
-%         input_file_dir ='../Input Data/Real Data with spammers/latent model/';
-%         output_file_dir='../Output Data/Real Data with spammers/latent model/';
-%         total_repeat_num=20;begin_num=1;end_num=10;step_num = 5;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-%         title_name='Robustness to low-quality annotators(Raykar''s Data)';
-%     case 13
-%         input_file_dir ='../Input Data/Real Data with spammers/expertise_difficult_model/';
-%         output_file_dir='../Output Data/Real Data with spammers/expertise_difficult_model/';
-%         total_repeat_num=20;begin_num=1;end_num=10;step_num = 5;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
-%         title_name='Robustness to low-quality annotators(Whitehill''s Data)';           
-%         
-%     case 11
-%         input_file_dir='../Input Data/Real Data/Real Label/';
-%         output_file_dir='../Output Data/Real Data Time/';
-%         total_repeat_num=2;begin_num=1;end_num=10;step_num = 5;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num); 
-%         title_name='Scalability for annotator number';
-%     case 12%%% for test
-%         input_file_dir='../Input Data/Real_Data_AAAI_balance/Real Label/';
-%         output_file_dir='../Output Data/Real_Data_AAAI_balance/Real Label/';
-%         total_repeat_num=5;begin_num=1;end_num=1;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-%         title_name='NER(Real Data)';   
         
     case 21 %%total_repeat_num=10 needs about 12h
         input_file_dir='../Input Data/Real Data/Clustering/';
@@ -111,27 +89,6 @@ switch experiment_num
         output_file_dir='../Output Data/Real Data/Real Label/';
         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
         title_name='Twitter Topic(Real Data)';
-        
-%     case 25%%total_repeat_num=1 needs about 10h
-%         input_file_dir='../Input Data/Real_Data_AAAI/Clustering/';
-%         output_file_dir='../Output Data/Real_Data_AAAI/Clustering/';
-%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-%         title_name='NER(Yan Yan''s Data)';              
-%     case 26
-%         input_file_dir='../Input Data/Real_Data_AAAI/latent model/';
-%         output_file_dir='../Output Data/Real_Data_AAAI/latent model/';
-%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-%         title_name='NER(Raykar''s Data)';
-%     case 27
-%         input_file_dir='../Input Data/Real_Data_AAAI/expertise_difficult_model/';
-%         output_file_dir='../Output Data/Real_Data_AAAI/expertise_difficult_model/';
-%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-%         title_name='NER(Whitehill''s Data)';
-%     case 28
-%         input_file_dir='../Input Data/Real_Data_AAAI/Real Label/';
-%         output_file_dir='../Output Data/Real_Data_AAAI/Real Label/';
-%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-%         title_name='NER(Real Data)';
     
         
         
@@ -156,9 +113,7 @@ switch experiment_num
         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
         title_name='NER(Real Data)';           
         
-        
-        
-        
+
         
     case 41
         input_file_dir ='../Input Data/Real Data Standar/Clustering/';
@@ -203,9 +158,6 @@ switch experiment_num
         total_repeat_num=100;begin_num=1;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
         title_name='Twitter Topic(Real Label)';  
 
-                
-        
-        
     case 49
         input_file_dir ='../Input Data/Real Data Standar/Clustering/';
         output_file_dir='../Output Data/Real Data Random2/Clustering/';
@@ -226,29 +178,6 @@ switch experiment_num
         output_file_dir='../Output Data/Real Data Random2/Real Label/';
         total_repeat_num=30;begin_num=11;end_num=11;step_num = 100;count=zeros(2*1000,(end_num-begin_num+1)*total_repeat_num);
         title_name='Twitter Topic(Real Data)';          
-   
-%     case 29%%total_repeat_num=1 needs about 10h
-%         input_file_dir='../Input Data/tiantian/Clustering/';
-%         output_file_dir='../Output Data/tiantian/Clustering/';
-%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-%         title_name='Flower(Yan Yan''s Data)';              
-%     case 30
-%         input_file_dir='../Input Data/tiantian/latent model/';
-%         output_file_dir='../Output Data/tiantian/latent model/';
-%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-%         title_name='Flower(Raykar''s Data)';
-%     case 31
-%         input_file_dir='../Input Data/tiantian/expertise_difficult_model/';
-%         output_file_dir='../Output Data/tiantian/expertise_difficult_model/';
-%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-%         title_name='Flower(Whitehill''s Data)';
-%     case 32
-%         input_file_dir='../Input Data/tiantian/Real Label/';
-%         output_file_dir='../Output Data/tiantian/Real Label/';
-%         total_repeat_num=10;begin_num=1;end_num=10;step_num = 100;count=zeros(2*end_num*step_num,total_repeat_num);
-%         title_name='Flower(Real Data)';
-
-
-total_repeat_num = 3;end_num = 3;
 
 end
+total_repeat_num = 3;end_num=3;

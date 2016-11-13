@@ -5,21 +5,21 @@ function [  ] = compare( experiment_num )
     for num=begin_num:end_num
         for repeat_num=1:total_repeat_num
             switch experiment_num
-                case {1,2,3,4,5,6,7,8,9,12,14,15,16,21,22,23,24,25,26,27,28,29,30,31,32}
+                case {1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,24,25,26,27,28,29,30,31,32}
                     file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_',num*step_num,'_',repeat_num,'.mat');
                     load(file_name);  
                     file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_',num*step_num,'_',repeat_num,'.mat');
                     load(file_name);  
        
-                case {11}
-                    file_name=sprintf('%s%s',input_file_dir,'X_1000_1.mat');
-                    load(file_name);  
-                    file_name=sprintf('%s%s%s',input_file_dir,'Y_1000_1','.mat');
-                    load(file_name);
-                    Y_temp=Y;
-                    for i = 1:num-1
-                        Y = [Y Y_temp];
-                    end
+%                 case {11}
+%                     file_name=sprintf('%s%s',input_file_dir,'X_1000_1.mat');
+%                     load(file_name);  
+%                     file_name=sprintf('%s%s%s',input_file_dir,'Y_1000_1','.mat');
+%                     load(file_name);
+%                     Y_temp=Y;
+%                     for i = 1:num-1
+%                         Y = [Y Y_temp];
+%                     end
                     
                 case {41,42,43,44}
                     file_name=sprintf('%s%s%d%s',input_file_dir,'X_',repeat_num,'.mat');
@@ -33,23 +33,21 @@ function [  ] = compare( experiment_num )
                     end                    
                     
                     
-                case {45,46,47,48,49,50,51,52}
+                case {45,46,47,48}
                     file_name=sprintf('%s%s%d%s',input_file_dir,'X_',repeat_num,'.mat');
                     load(file_name); 
                     file_name=sprintf('%s%s%d%s',input_file_dir,'Y_',repeat_num,'.mat');
                     load(file_name); 
                     
+                    index = find(sum(Y~=-2,2)>0);
+                    X = X(index,:);
+                    Y = Y(index,:);                      
                     
                     [n,expert_num] = size(Y);
                     rn_temp = rand(n,expert_num*(num-1));
                     Y_temp = zeros(n,expert_num*(num-1));
                     
-                    if experiment_num >= 49 && experiment_num <= 52
-                        probability_temp = 0.8;
-                    else
-                        probability_temp = 0.5;
-                    end
-
+                    probability_temp = 0.5;
                     for i=1:n
                         for t=1:expert_num*(num-1)
                             if(rn_temp(i,t)< probability_temp)
@@ -61,6 +59,41 @@ function [  ] = compare( experiment_num )
                     end  
 
                     Y = [Y Y_temp];     
+                    
+                    
+                case {49,50,51,52}
+                    file_name=sprintf('%s%s%d%s',input_file_dir,'X_',repeat_num,'.mat');
+                    load(file_name); 
+                    file_name=sprintf('%s%s%d%s',input_file_dir,'Y_',repeat_num,'.mat');
+                    load(file_name); 
+                    %%%%%%%%需要加load 每个X对应的ground_truth.%%%%%%%%%%%%%%%%
+                    file_name=sprintf('%s%s%d%s',input_file_dir,'Z_',repeat_num,'.mat');
+                    load(file_name); 
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    
+                    index = find(sum(Y~=-2,2)>0);
+                    X = X(index,:);
+                    Y = Y(index,:);  
+                    Z = Z(index,:);
+
+
+                    [n,expert_num] = size(Y);
+                    Y_temp = zeros(n,expert_num*(num-1));
+                    
+                    index = randperm(n);
+                    X = X(index,:);
+                    Y = Y(index,:);  
+                    Z = Z(index,:);   
+                    
+                    wrong_num = floor(n/2);
+
+                    for t=1:expert_num*(num-1)
+                        Y_temp(:,t) = Z;
+                        Y_temp(1:wrong_num,t) = - Y_temp(1:wrong_num,t);
+                    end  
+
+                    Y = [Y Y_temp];                       
+
             end
 
             
