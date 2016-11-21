@@ -26,7 +26,7 @@ function [  ] = handle_result_robustness( experiment_num )
     load(file_name);
     W_LCM = W_LCM1;
 %     total_repeat_num = size(W_LFC,1);
-%     end_num = 10;
+    end_num = 11;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     Result_LFC=zeros(total_repeat_num*(end_num-begin_num+1),1);
     Result_PC = Result_LFC;

@@ -32,11 +32,11 @@ function [  ] = handle_result( experiment_num )
     
     Result_LFC=zeros(total_iteration_num,1);
     for t=1:total_iteration_num    
-        repeat_num = ceil(t/total_repeat_num);
-        k = mod(t-1, total_repeat_num)+1;
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         repeat_num = ceil(t/total_repeat_num);
+%         k = mod(t-1, total_repeat_num)+1;
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',t,'.mat');
         load(file_name);
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',t,'.mat');
         load(file_name);
         [n d]=size(X_test);
         X_test(:,d+1)=ones(n,1);
@@ -63,12 +63,17 @@ function [  ] = handle_result( experiment_num )
 
     Result_PC=zeros(total_iteration_num,1);
     for t=1:total_iteration_num  
-        repeat_num = ceil(t/total_repeat_num);
-        k = mod(t-1, total_repeat_num)+1;
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         repeat_num = ceil(t/total_repeat_num);
+%         k = mod(t-1, total_repeat_num)+1;
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',t,'.mat');
         load(file_name);
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',t,'.mat');
         load(file_name);
+        
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
         [n d]=size(X_test);
         X_test(:,d+1)=ones(n,1);
         target=(0.5*Y_test+0.5)';
@@ -94,12 +99,17 @@ function [  ] = handle_result( experiment_num )
 
     Result_MV=zeros(total_iteration_num,1);
     for t=1:total_iteration_num 
-       repeat_num = ceil(t/total_repeat_num);
-        k = mod(t-1, total_repeat_num)+1;
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%        repeat_num = ceil(t/total_repeat_num);
+%         k = mod(t-1, total_repeat_num)+1;
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',t,'.mat');
         load(file_name);
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',t,'.mat');
         load(file_name);
+        
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
         [n d]=size(X_test);
         X_test(:,d+1)=ones(n,1);
         target=(0.5*Y_test+0.5)';
@@ -126,12 +136,17 @@ function [  ] = handle_result( experiment_num )
 
     Result_M3V=zeros(total_iteration_num,1);
     for t=1:total_iteration_num   
-        repeat_num = ceil(t/total_repeat_num);
-        k = mod(t-1, total_repeat_num)+1;
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         repeat_num = ceil(t/total_repeat_num);
+%         k = mod(t-1, total_repeat_num)+1;
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',t,'.mat');
         load(file_name);
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',t,'.mat');
         load(file_name);
+%         
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
         [n d]=size(X_test);
         X_test(:,d+1)=ones(n,1);
         target=(0.5*Y_test+0.5)';
@@ -157,12 +172,17 @@ function [  ] = handle_result( experiment_num )
 
     Result_LCM=zeros(total_iteration_num,1);
     for t=1:total_iteration_num
-        repeat_num = ceil(t/total_repeat_num);
-        k = mod(t-1, total_repeat_num)+1;
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',t,'.mat');
         load(file_name);
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',t,'.mat');
         load(file_name);
+        
+%         repeat_num = ceil(t/total_repeat_num);
+%         k = mod(t-1, total_repeat_num)+1;
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
         [n d]=size(X_test);
         X_test(:,d+1)=ones(n,1);
         target=(0.5*Y_test+0.5)';
@@ -188,12 +208,17 @@ function [  ] = handle_result( experiment_num )
 
     Result_LCM1=zeros(total_iteration_num,1);
     for t=1:total_iteration_num
-        repeat_num = ceil(t/total_repeat_num);
-        k = mod(t-1, total_repeat_num)+1;
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',t,'.mat');
         load(file_name);
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',t,'.mat');
         load(file_name);
+%         
+%         repeat_num = ceil(t/total_repeat_num);
+%         k = mod(t-1, total_repeat_num)+1;
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
         [n d]=size(X_test);
         X_test(:,d+1)=ones(n,1);
         target=(0.5*Y_test+0.5)';
@@ -219,12 +244,17 @@ function [  ] = handle_result( experiment_num )
     
     Result_LCM2=zeros(total_iteration_num,1);
     for t=1:total_iteration_num
-        repeat_num = ceil(t/total_repeat_num);
-        k = mod(t-1, total_repeat_num)+1;
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',t,'.mat');
         load(file_name);
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',t,'.mat');
         load(file_name);
+%         
+%         repeat_num = ceil(t/total_repeat_num);
+%         k = mod(t-1, total_repeat_num)+1;
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
         [n d]=size(X_test);
         X_test(:,d+1)=ones(n,1);
         target=(0.5*Y_test+0.5)';
@@ -250,13 +280,18 @@ function [  ] = handle_result( experiment_num )
 
     
     Result_MV_Probability=zeros(total_iteration_num,1);
-    for t=1:total_iteration_num    
-        repeat_num = ceil(t/total_repeat_num);
-        k = mod(t-1, total_repeat_num)+1;
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+    for t=1:total_iteration_num  
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',t,'.mat');
         load(file_name);
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',t,'.mat');
         load(file_name);
+        
+%         repeat_num = ceil(t/total_repeat_num);
+%         k = mod(t-1, total_repeat_num)+1;
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
         [n d]=size(X_test);
         X_test(:,d+1)=ones(n,1);
         target=(0.5*Y_test+0.5)';
@@ -282,13 +317,17 @@ function [  ] = handle_result( experiment_num )
     
     
     Result_DS_Estimator=zeros(total_iteration_num,1);
-    for t=1:total_iteration_num   
-        repeat_num = ceil(t/total_repeat_num);
-        k = mod(t-1, total_repeat_num)+1;
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+    for t=1:total_iteration_num
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',t,'.mat');
         load(file_name);
-        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
-        load(file_name);
+        file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',t,'.mat');
+        load(file_name);        
+%         repeat_num = ceil(t/total_repeat_num);
+%         k = mod(t-1, total_repeat_num)+1;
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'X_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
+%         file_name=sprintf('%s%s%d%s%d%s',input_file_dir,'Y_test_',repeat_num*step_num,'_',k,'.mat');
+%         load(file_name);
         [n d]=size(X_test);
         X_test(:,d+1)=ones(n,1);
         target=(0.5*Y_test+0.5)';
