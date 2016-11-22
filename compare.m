@@ -18,7 +18,7 @@ function [  ] = compare( experiment_num )
             file_name=sprintf('%s%s%d%s',input_file_dir,'Z_',repeat_num,'.mat');
             load(file_name); 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
-            index = find(sum(Y~=-2,2)>0);
+            index = find(sum(Y~=-2,2)>3);
             X = X(index,:);
             Y = Y(index,:);  
             Z = Z(index,:);
