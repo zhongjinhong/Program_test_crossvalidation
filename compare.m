@@ -18,7 +18,7 @@ function [  ] = compare( experiment_num )
             file_name=sprintf('%s%s%d%s',input_file_dir,'Z_',repeat_num,'.mat');
             load(file_name); 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
-            index = find(sum(Y~=-2,2)>3);
+            index = find(sum(Y~=-2,2)>0);
             X = X(index,:);
             Y = Y(index,:);  
             Z = Z(index,:);
@@ -83,13 +83,13 @@ function [  ] = compare( experiment_num )
             
             
             
-            tic
-            W_MV( (num-begin_num)*total_repeat_num+repeat_num,: )=Majority_Method(X,Y,svm_para);            
-            Time_MV ((num-begin_num)*total_repeat_num+repeat_num)= toc;           
-            tic
-            W_M3V( (num-begin_num)*total_repeat_num+repeat_num,: )=M3V(X,Y,svm_para);
-            Time_M3V ((num-begin_num)*total_repeat_num+repeat_num)= toc;          
-            tic
+%             tic
+%             W_MV( (num-begin_num)*total_repeat_num+repeat_num,: )=Majority_Method(X,Y,svm_para);            
+%             Time_MV ((num-begin_num)*total_repeat_num+repeat_num)= toc;           
+%             tic
+%             W_M3V( (num-begin_num)*total_repeat_num+repeat_num,: )=M3V(X,Y,svm_para);
+%             Time_M3V ((num-begin_num)*total_repeat_num+repeat_num)= toc;          
+%             tic
 
             
             
@@ -112,7 +112,7 @@ function [  ] = compare( experiment_num )
             
             
 %             
-            W_LCM1( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
+%             W_LCM1( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
 %             W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM_compare(X,Y,svm_para);  
 
             
@@ -154,12 +154,12 @@ function [  ] = compare( experiment_num )
 %             end           
             
             
-            tic
-            W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: )=LFC(X,Y);
-            Time_LFC( (num-begin_num)*total_repeat_num+repeat_num )= toc;
-            tic
-            W_PC( (num-begin_num)*total_repeat_num+repeat_num,: )=PC(X,Y);
-            Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
+%             tic
+%             W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: )=LFC(X,Y);
+%             Time_LFC( (num-begin_num)*total_repeat_num+repeat_num )= toc;
+%             tic
+%             W_PC( (num-begin_num)*total_repeat_num+repeat_num,: )=PC(X,Y);
+%             Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
 
             
             dis_information=sprintf('%s%d  %s%d\n','num=',num,'repeat_num=',repeat_num);
@@ -171,19 +171,19 @@ function [  ] = compare( experiment_num )
             
             
             
-            file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
-            save(file_name,'W_LFC');
-            file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
-            save(file_name,'W_PC');
-            file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
-            save(file_name,'W_MV');
-            file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
-            save(file_name,'W_M3V');      
+%             file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
+%             save(file_name,'W_LFC');
+%             file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
+%             save(file_name,'W_PC');
+%             file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
+%             save(file_name,'W_MV');
+%             file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
+%             save(file_name,'W_M3V');      
 %             file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
 %             save(file_name,'W_LCM');
             
-            file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
-            save(file_name,'W_LCM1');
+%             file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
+%             save(file_name,'W_LCM1');
             file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
             save(file_name,'W_LCM2');             
             

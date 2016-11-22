@@ -62,7 +62,7 @@ function [W,weight]=LCM_test_binary(X,Y,svm_para)
             balance = sum( predict_lable(k,t).label == 1)/n;
 
 
-            if balance ==1 || balance == 0
+            if balance >=0.9 || balance <= 0.1
                 accuracy_bagging(k,t) = 0.5;
                 continue;
             end
@@ -88,6 +88,9 @@ function [W,weight]=LCM_test_binary(X,Y,svm_para)
                 accuracy_bagging(k,t) = accuracy_bagging(k,t)/Numm(k,t);
                 available_num = available_num + 1;
                 total_accuracy = total_accuracy + p;
+                if (accuracy_bagging(k,t)<0.5)
+                    accuracy_bagging(k,t) = 0.5;
+                end
             else
                 accuracy_bagging(k,t) = 0.5;
             end      
@@ -96,9 +99,10 @@ function [W,weight]=LCM_test_binary(X,Y,svm_para)
 
     end
 
-
+%     max_accuracy = max(max(accuracy_bagging));
+%     accuracy_bagging = 0.5+0.5*(accuracy_bagging-0.5)/(max_accuracy-0.5);
 %%%%%%%%%%%%% Initial all data %%%%%%%%%%%%%
-
+    max_accuracy = max(accuracy_bagging);
     for t = 1:expert_num
         for i = 1:n
             if Y(i,t) == -2
