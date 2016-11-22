@@ -42,7 +42,7 @@ function [  ] = produce_yanyan_data( file_dir, data, label, labeled_num)
         end
 
 
-        num = floor(0.9*n);
+        num = floor(0.7*n);
         for t=1:expert_num
             index = randperm(n);
             Y(index(1:num),t) = -2;          
