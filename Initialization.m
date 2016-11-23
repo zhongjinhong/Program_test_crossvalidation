@@ -1,4 +1,4 @@
-total_repeat_num=20;
+total_repeat_num=100;
 begin_num=1;
 end_num=1;
 % count=zeros(2*end_num*step_num,(end_num-begin_num+1)*total_repeat_num); 
