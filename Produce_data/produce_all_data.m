@@ -23,11 +23,11 @@ function [  ] = produce_all_data( data_num, experiment_num)
 %             load '../../Input Data/Real_Data_AAAI/real_data_aaai.mat';
 %             data_string = '../../Input Data/Real_Data_AAAI/';
         case 8
-            load 'load '../../Input Data/Adult/Adult.mat'; Real_Data_AAAI_balance/real_data_aaai_balance.mat';
+            load '../../Input Data/Real_Data_AAAI_balance/real_data_aaai_balance.mat';
             data_string = '../../Input Data/Real_Data_AAAI_balance/';
             
         case 11
-            load 'load '../../Input Data/Adult/Adult.mat'; Real Data/realdata1.mat';
+            load '../../Input Data/Real Data/realdata1.mat';
             data_string = '../../Input Data/Real Data/';
     end
     

@@ -415,7 +415,11 @@ function [  ] = handle_result( experiment_num )
 %     std_result      = [std_MV_Probability,std_DS_Estimator,std_Soft_LCM2,std_Soft_LCM1]
     
 %     [h12,p12,ci12,status12]=ttest(Result_LCM1,Result_LCM2);
-    
+    acc=[acc_LFC,acc_M3V,acc_MV,acc_PC,acc_Soft_LCM2];
+    name = {'LFC','M3V','MV','PC','CS-LFC'};
+    [acc_sort,index]=sort(acc,'descend');
+    name(index) 
+
     file_name=sprintf('%s%s',output_file_dir,'plot_data.mat');
     save(file_name,'*');
 end

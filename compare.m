@@ -4,7 +4,7 @@ function [  ] = compare( experiment_num )
     svm_para=sprintf('%s','-s 0 -t 0');
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    total_repeat_num = 20;
+%     total_repeat_num = 20;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
  
@@ -94,7 +94,7 @@ function [  ] = compare( experiment_num )
             
             
             [W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ),weight]=LCM_test_binary(X,Y,svm_para);
-%             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%               
 %             Y_estimate = weight(n+1:2*n,1)-weight(1:n,1);
 %             Y_estimate = (Y_estimate>0);
 %             Y_estimate = 2*Y_estimate - 1;
@@ -108,10 +108,10 @@ function [  ] = compare( experiment_num )
 %                     index_count = index_count + 1;
 %                 end
 %             end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             
             
             
             
-%             
             W_LCM1( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
 %             W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM_compare(X,Y,svm_para);  
 
@@ -124,22 +124,23 @@ function [  ] = compare( experiment_num )
                 end
             end
             
-            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             
 %             tic
 %             W_MV_Probability( (num-begin_num)*total_repeat_num+repeat_num,: )=MV_Probability(X,Y,svm_para);
 %             Time_MV_Probability((num-begin_num)*total_repeat_num+repeat_num)= toc;
 %             tic
 %             W_DS_Estimator( (num-begin_num)*total_repeat_num+repeat_num,: )=DS_Estimator(X,Y,svm_para);
 %             Time_DS_Estimator ((num-begin_num)*total_repeat_num+repeat_num)= toc;            
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
             [n,d]=size(X);
             X(:,d+1)=1;d=d+1;  
 
             
-%             [W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: ),miu]=LFC_test_binary(X,Y);
 
-            
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              
+%             [W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: ),miu]=LFC_test_binary(X,Y);
 %             Y_estimate = (miu>0.5);
 %             Y_estimate = 2*Y_estimate - 1;
 %             accuracy_lfc(repeat_num) = sum(Y_estimate.*Z>0)/n;
@@ -152,7 +153,7 @@ function [  ] = compare( experiment_num )
 %                     index_count = index_count + 1;
 %                 end
 %             end           
-            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              
             
             tic
             W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: )=LFC(X,Y);

@@ -1,6 +1,6 @@
 function [w0]=LFC(X,Y)
     options = optimset('GradObj','on');
-    options.TolX=0.1;
+    options.TolX=0.001;
     options.MaxFunEvals=1000;
     options.MaxIter=20;
     emusinou=10^(-6);
