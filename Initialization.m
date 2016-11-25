@@ -112,42 +112,42 @@ switch experiment_num
     case 45
         input_file_dir ='../Input Data/Real Data/Clustering/';
         output_file_dir='../Output Data/Real Data Random1/Clustering/';
-        total_repeat_num=100;end_num=11;
+        total_repeat_num=20;end_num=11;
         title_name='Twitter Topic(Clustering data)';        
     case 46
         input_file_dir ='../Input Data/Real Data/latent model/';
         output_file_dir='../Output Data/Real Data Random1/latent model/';
-        total_repeat_num=100;end_num=11;
+        total_repeat_num=20;end_num=11;
         title_name='Twitter Topic(Raykar''s Data)'; 
     case 47
         input_file_dir ='../Input Data/Real Data/expertise_difficult_model/';
         output_file_dir='../Output Data/Real Data Random1/expertise_difficult_model/';
-        total_repeat_num=100;end_num=11;
+        total_repeat_num=20;end_num=11;
         title_name='Twitter Topic(Whitehill''s Data)'; 
     case 48
         input_file_dir ='../Input Data/Real Data/Real Label/';
         output_file_dir='../Output Data/Real Data Random1/Real Label/';
-        total_repeat_num=100;end_num=11;
+        total_repeat_num=20;end_num=11;
         title_name='Twitter Topic(Real Label)';  
 
     case 49
         input_file_dir ='../Input Data/Real Data/Clustering/';
         output_file_dir='../Output Data/Real Data Random2/Clustering/';
-        total_repeat_num=30;end_num=11;
+        total_repeat_num=20;end_num=11;
         title_name='Twitter Topic(Yan Yan''s Data)';        
     case 50
         input_file_dir ='../Input Data/Real Data/latent model/';
         output_file_dir='../Output Data/Real Data Random2/latent model/';
-        total_repeat_num=30;end_num=11;
+        total_repeat_num=20;end_num=11;
         title_name='Twitter Topic(Raykar''s Data)'; 
     case 51
         input_file_dir ='../Input Data/Real Data/expertise_difficult_model/';
         output_file_dir='../Output Data/Real Data Random2/expertise_difficult_model/';
-        total_repeat_num=30;end_num=11;
+        total_repeat_num=20;end_num=11;
         title_name='Twitter Topic(Whitehill''s Data)'; 
     case 52
         input_file_dir ='../Input Data/Real Data/Real Label/';
         output_file_dir='../Output Data/Real Data Random2/Real Label/';
-        total_repeat_num=30;end_num=11;
+        total_repeat_num=20;end_num=11;
         title_name='Twitter Topic(Real Data)';          
 end

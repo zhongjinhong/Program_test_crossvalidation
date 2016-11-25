@@ -6,8 +6,19 @@ function [  ] = compare( experiment_num )
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     total_repeat_num = 20;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    if experiment_num==24 || experiment_num==28
+        mini_annotator = 0;
+    else
+        mini_annotator = 2;
+    end
     
- 
+    if experiment_num==28
+        write_step = 1;
+    else
+        write_step = 10;
+    end
+    
+
     for num=begin_num:end_num
         for repeat_num=1:total_repeat_num           
             file_name=sprintf('%s%s%d%s',input_file_dir,'X_',repeat_num,'.mat');
@@ -18,7 +29,7 @@ function [  ] = compare( experiment_num )
             file_name=sprintf('%s%s%d%s',input_file_dir,'Z_',repeat_num,'.mat');
             load(file_name); 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
-            index = find(sum(Y~=-2,2)>3);
+            index = find(sum(Y~=-2,2)>mini_annotator);
             X = X(index,:);
             Y = Y(index,:);  
             Z = Z(index,:);
@@ -171,23 +182,25 @@ function [  ] = compare( experiment_num )
             
             
             
-            
-%             file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
-%             save(file_name,'W_LFC');
-%             file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
-%             save(file_name,'W_PC');
-%             file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
-%             save(file_name,'W_MV');
-%             file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
-%             save(file_name,'W_M3V');      
-%             file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
-%             save(file_name,'W_LCM');
-            
-%             file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
-%             save(file_name,'W_LCM1');
-%             file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
-%             save(file_name,'W_LCM2');             
-            
+            if mod(repeat_num,write_step)==0          
+                file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
+                save(file_name,'W_LFC');
+                file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
+                save(file_name,'W_PC');
+                file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
+                save(file_name,'W_MV');
+                file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
+                save(file_name,'W_M3V');      
+                file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
+                save(file_name,'W_LCM');
+
+                file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
+                save(file_name,'W_LCM1');
+                file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
+                save(file_name,'W_LCM2');             
+                file_name=sprintf('%s%s',output_file_dir,'Time.mat');
+                save(file_name,'Time_*');       
+            end
 % 
 % 
 %             file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
@@ -200,25 +213,24 @@ function [  ] = compare( experiment_num )
 %             file_name=sprintf('%s%s',output_file_dir,'count.mat');
 %             save(file_name,'count','-v7.3');
 % 
-%             file_name=sprintf('%s%s',output_file_dir,'Time.mat');
-%             save(file_name,'Time_*');            
+           
         
         
         end
 
-        file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
-        save(file_name,'W_LFC');
-        file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
-        save(file_name,'W_PC');
-        file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
-        save(file_name,'W_MV');
-        file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
-        save(file_name,'W_M3V');      
-%         
-        file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
-        save(file_name,'W_LCM1');
-        file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
-        save(file_name,'W_LCM2');        
+%         file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
+%         save(file_name,'W_LFC');
+%         file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
+%         save(file_name,'W_PC');
+%         file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
+%         save(file_name,'W_MV');
+%         file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
+%         save(file_name,'W_M3V');      
+% %         
+%         file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
+%         save(file_name,'W_LCM1');
+%         file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
+%         save(file_name,'W_LCM2');        
 %         
 %         
 %         file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
