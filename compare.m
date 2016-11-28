@@ -5,6 +5,7 @@ function [  ] = compare( experiment_num )
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     total_repeat_num = 20;
+%     begin_num = 2;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if experiment_num==24 || experiment_num==28
         mini_annotator = 0;
@@ -54,7 +55,7 @@ function [  ] = compare( experiment_num )
                         end 
                     end  
 
-                    Y = [Y Y_temp];     
+                    Y = [Y Y_temp];
 
                 case {49,50,51,52}
                     Y_temp = zeros(n,expert_num*(num-1));
@@ -73,7 +74,8 @@ function [  ] = compare( experiment_num )
 
                     Y = [Y Y_temp];     
             end
-
+            
+            [n,expert_num] = size(Y);
 
             if experiment_num == 28
                 filtered_annotator =[3 7 15 18 47 58 63 66 68 69 75 80 93 111 151 153 158 159 184 193 194 201 204 210 229];
@@ -94,17 +96,17 @@ function [  ] = compare( experiment_num )
             
             
             
-            tic
-            W_MV( (num-begin_num)*total_repeat_num+repeat_num,: )=Majority_Method(X,Y,svm_para);            
-            Time_MV ((num-begin_num)*total_repeat_num+repeat_num)= toc;           
-            tic
-            W_M3V( (num-begin_num)*total_repeat_num+repeat_num,: )=M3V(X,Y,svm_para);
-            Time_M3V ((num-begin_num)*total_repeat_num+repeat_num)= toc;          
-            tic
+%             tic
+%             W_MV( (num-begin_num)*total_repeat_num+repeat_num,: )=Majority_Method(X,Y,svm_para);            
+%             Time_MV ((num-begin_num)*total_repeat_num+repeat_num)= toc;           
+%             tic
+%             W_M3V( (num-begin_num)*total_repeat_num+repeat_num,: )=M3V(X,Y,svm_para);
+%             Time_M3V ((num-begin_num)*total_repeat_num+repeat_num)= toc;          
+%             tic
 
             
             
-            [W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ),weight]=LCM_test_binary(X,Y,svm_para);
+%             [W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ),weight]=LCM_test_binary(X,Y,svm_para);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%               
 %             Y_estimate = weight(n+1:2*n,1)-weight(1:n,1);
 %             Y_estimate = (Y_estimate>0);
@@ -123,8 +125,7 @@ function [  ] = compare( experiment_num )
             
             
             
-            W_LCM1( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
-%             W_LCM2( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM_compare(X,Y,svm_para);  
+%             W_LCM1( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
 
             
             for i=1:n

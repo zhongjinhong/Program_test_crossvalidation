@@ -22,9 +22,9 @@ function [  ] = handle_result_robustness( experiment_num )
 %     load(file_name);
 %     W_LCM = W_LCM2;
 % 
-    file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
+    file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
     load(file_name);
-    W_LCM = W_LCM1;
+    W_LCM = W_LCM2;
 %     total_repeat_num = size(W_LFC,1);
     end_num = 11;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
