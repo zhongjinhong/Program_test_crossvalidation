@@ -65,9 +65,30 @@ for i=1:n
 end
 Result_LFC= Result_LFC/n;
 
+for i = 1:20
+    for j = 1:5
+        b(i,j) = a((i-1)*5+j);
+    end
+end
 
 
+[c,d]=sort(b,2,'descend')
+for i = 1:20
+    for j = 1:5
+        e(i,d(i,j)) = j;
+    end
+end
 
+e1=e;
 
+for i = 1:20
+    for j = 1:4
+        if e1(i,j)>e1(i,5)
+            e1(i,j) = e1(i,j)-1;
+        end
+    end
+end
 
+taifang=12*N/(k*(k+1))*(sum(R.^2)-k*(k+1)^2/4)
+ff=(N-1)*taifang/(N*(k-1)-taifang)
 

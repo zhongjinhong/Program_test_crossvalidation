@@ -353,19 +353,20 @@ function [  ] = handle_result( experiment_num )
     Soft_LCM2_result = sprintf('%.4f+%.4f', acc_Soft_LCM2,std_Soft_LCM2);
      
   
-    result1 = {MV_result,M3V_result,LFC_result,PC_result,Soft_LCM1_result}
+    result1 = {MV_result,M3V_result,LFC_result,PC_result,Soft_LCM2_result}
 %     result2 = {MV_Probability_result,DS_Estimator_result,Soft_LCM2_result,Soft_LCM1_result}   
     
     
     h=zeros(6,1);
     p=zeros(6,1);
-    [h(1),p(1),ci,status]=ttest(Result_LCM1,Result_MV);
-    [h(2),p(2),ci,status]=ttest(Result_LCM1,Result_M3V);
-    [h(3),p(3),ci,status]=ttest(Result_LCM1,Result_LFC);
-    [h(4),p(4),ci,status]=ttest(Result_LCM1,Result_PC);
+    [h(1),p(1),ci,status]=ttest(Result_LCM2,Result_MV);
+    [h(2),p(2),ci,status]=ttest(Result_LCM2,Result_M3V);
+    [h(3),p(3),ci,status]=ttest(Result_LCM2,Result_LFC);
+    [h(4),p(4),ci,status]=ttest(Result_LCM2,Result_PC);
+    h'
 %     [h(5),p(5),ci,status]=ttest(Result_LCM1,Result_MV_Probability);
 %     [h(6),p(6),ci,status]=ttest(Result_LCM1,Result_DS_Estimator);
-    [h(7),p(7),ci,status]=ttest(Result_LCM1,Result_LCM2);
+%     [h(7),p(7),ci,status]=ttest(Result_LCM1,Result_LCM2);
     
 %     accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_Soft_LCM1]
 %     std_result      = [std_MV,std_M3V,std_LFC,std_PC,std_Soft_LCM1]    
