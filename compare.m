@@ -5,7 +5,7 @@ function [  ] = compare( experiment_num )
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     total_repeat_num = 20;
-%     begin_num = 2;
+    begin_num = 2;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if experiment_num==24 || experiment_num==28
         mini_annotator = 0;
@@ -31,23 +31,43 @@ function [  ] = compare( experiment_num )
             load(file_name); 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
             index = find(sum(Y~=-2,2)>mini_annotator);
+%              index = find(sum(Y~=-2,2)>-1);
             X = X(index,:);
             Y = Y(index,:);  
             Z = Z(index,:);
             [n,expert_num] = size(Y);
             switch experiment_num
                 case {41,42,43,44}
-                    cluster_num = 10;
+                    file_name=sprintf('%s%s%d%s',input_file_dir,'true_label_',repeat_num,'.mat');
+                    load(file_name); 
+                    train_label = train_label(index,:);
+                    Idx = zeros(n,1);
+                    index = find(train_label == 1);
+                    Idx(index,1) = 1;
+                    index = find(train_label == 2);
+                    Idx(index,1) = 2;
+                    index = find(train_label == 4);
+                    Idx(index,1) = 3;
+
+                    index = find(train_label == 3);
+                    job_num = size(index,1);
+                    index1 = randperm(job_num);
+                    instance_num = floor(job_num/3);
+                    Idx( index(index1(1:instance_num)),1 ) = 4;
+                    Idx( index(index1(instance_num+1:instance_num*2)),1 ) = 5;
+                    Idx( index(index1(instance_num*2+1:end)),1 ) = 6;  
+                    
                     Y_temp = zeros(n,expert_num*(num-1));
                     for t = 1:expert_num*(num-1)
-                        [Idx,C]=kmeans(X,cluster_num);
+                        topic_idx = randperm(6);
                         Y_temp(:,t) = Z;
                         for i = 1:n
-                            if(Idx(i,1)<6)
+                            if(Idx(i,1)==topic_idx(1)||Idx(i,1)==topic_idx(2)||Idx(i,1)==topic_idx(3))
                                 Y_temp(i,t)= -Y_temp(i,t);
                             end
                         end
                     end
+
                     Y = [Y Y_temp];                                
                 case {45,46,47,48}
                     rn_temp = rand(n,expert_num*(num-1));

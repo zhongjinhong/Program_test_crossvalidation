@@ -13,20 +13,21 @@ function [  ] = handle_result( experiment_num )
     load(file_name);
     file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
     load(file_name);
-%     file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
-%     load(file_name);
-
-    file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
-    load(file_name);    
-    file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
+    file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
     load(file_name);
+
+%     file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
+%     load(file_name);    
+%     file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
+%     load(file_name);
     
 %     file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
 %     load(file_name);
 %     file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
 %     load(file_name);
     
-    
+    W_LCM1 = W_LCM;
+    W_LCM2 = W_LCM;
     total_iteration_num=size(W_LCM2,1);      
 
     

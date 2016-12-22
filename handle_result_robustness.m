@@ -14,19 +14,19 @@ function [  ] = handle_result_robustness( experiment_num )
     load(file_name);
     file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
     load(file_name);
-%     file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
-%     load(file_name);
+    file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
+    load(file_name);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
 %     file_name=sprintf('%s%s',output_file_dir,'W_LFC1.mat');
 %     load(file_name);
 %     W_LCM = W_LCM2;
 % 
-    file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
-    load(file_name);
-    W_LCM = W_LCM2;
+%     file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
+%     load(file_name);
+%     W_LCM2 = W_LCM;
 %     total_repeat_num = size(W_LFC,1);
-    end_num = 11;
+    end_num = 4;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     Result_LFC=zeros(total_repeat_num*(end_num-begin_num+1),1);
     Result_PC = Result_LFC;
