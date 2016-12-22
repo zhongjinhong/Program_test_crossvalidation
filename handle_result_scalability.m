@@ -10,7 +10,7 @@ function [  ] = handle_result_scalability( experiment_num )
 %         Time_Soft_LCM1( (i-1)*10+1:i*10 ) = Time_Soft_LCM(i);
 %     end
 %     end_num = 8;
-    Time_Soft_LCM = Time_Soft_LCM1;
+    Time_Soft_LCM = Time_LCM;
 %     
 %     
 %     file_name=sprintf('%s%s',output_file_dir,'Time_LFC1.mat');
@@ -32,7 +32,7 @@ function [  ] = handle_result_scalability( experiment_num )
 %         time_MV_Probability(i)=mean(Time_MV_Probability( (i-1)*total_repeat_num+1:i*total_repeat_num));
 %         time_DS_Estimator(i)=mean(Time_DS_Estimator( (i-1)*total_repeat_num+1:i*total_repeat_num));
     end
-    if experiment_num == 48
+    if experiment_num == 48 || experiment_num == 52
         x_label = 5:5:5*n;
     else
         x_label = 10:10:10*n;
@@ -47,7 +47,7 @@ function [  ] = handle_result_scalability( experiment_num )
     han(4,1)=plot(x_label, time_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
     han(5,1)=plot(x_label, time_Soft_LCM,'-k','LineWidth',linewidth);
      set(gca, 'YScale','log');
-    le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC-SVM');
+    le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','QS-LFC-SVM');
     set(le,'Box','off');
     set(le,'FontSize',11)
     title(title_name,'FontSize',16)

@@ -11,7 +11,7 @@ function [  ] = produce_all_data( data_num, experiment_num)
             load '../../Input Data/mushroom/mushroom.mat';
             data_string = '../../Input Data/mushroom/';
         case 4
-            load '../../Input Data/Real Data/realdata2.mat';
+            load '../../Input Data/Real Data/realdata1.mat';
             data_string = '../../Input Data/Real Data/';
         case 5
             load '../../Input Data/test_data/dna.mat';

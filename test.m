@@ -1,9 +1,9 @@
 i = 3;for j = 1:3 produce_all_data(i,j);end
 i = 8;for j = 1:3 produce_all_data(i,j);end
 produce_all_data(,4)
-compare()
+compare(4)
 for num = 12:-1:7 compare(num);end
-for num = 21:23 compare(num);end; for num = 25:27 compare(num);end
+for num = 21:24 compare(num);end; for num = 10:12 compare(num);end
 compare(7)
 
 for i = 1:1000

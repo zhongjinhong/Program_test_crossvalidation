@@ -37,10 +37,18 @@ function [  ] = compare( experiment_num )
             [n,expert_num] = size(Y);
             switch experiment_num
                 case {41,42,43,44}
-                    Y_temp=Y;
-                    for i = 1:num-1
-                        Y = [Y Y_temp];
-                    end              
+                    cluster_num = 10;
+                    Y_temp = zeros(n,expert_num*(num-1));
+                    for t = 1:expert_num*(num-1)
+                        [Idx,C]=kmeans(X,cluster_num);
+                        Y_temp(:,t) = Z;
+                        for i = 1:n
+                            if(Idx(i,1)<6)
+                                Y_temp(i,t)= -Y_temp(i,t);
+                            end
+                        end
+                    end
+                    Y = [Y Y_temp];                                
                 case {45,46,47,48}
                     rn_temp = rand(n,expert_num*(num-1));
                     Y_temp = zeros(n,expert_num*(num-1));

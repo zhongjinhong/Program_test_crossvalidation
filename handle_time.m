@@ -42,13 +42,14 @@ function [  ] = handle_time( type )
             data(k,2) = mean(Time_M3V);
             data(k,3) = mean(Time_LFC);
             data(k,4) = mean(Time_PC); 
-            data(k,5) = mean(Time_Soft_LCM);        
+            data(k,5) = mean(Time_LCM);        
         end
 
         bar(data,'BaseValue',0.001);
         name = {'Adult', 'Conect', 'Mushroom', 'DNA','Twitter Topic','Twitter NER'};
-        l=legend('MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC');
-        set(l,'YColor',[1 1 1],'XColor',[1 1 1]);
+        l=legend('MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC-SVM');
+        legend('boxoff')
+%         set(l,'YColor',[1 1 1],'XColor',[1 1 1]);
 %         set(l,'Box','off');
         set(gca, 'XTickLabel', name);
         set(gca, 'FontSize', 12);
@@ -80,13 +81,14 @@ function [  ] = handle_time( type )
             data(k,2) = mean(Time_M3V);
             data(k,3) = mean(Time_LFC);
             data(k,4) = mean(Time_PC); 
-            data(k,5) = mean(Time_Soft_LCM);        
+            data(k,5) = mean(Time_LCM);        
         end
 
        bar(data,'BaseValue',0.001);
         name = {'Adult', 'Conect', 'Mushroom', 'DNA','Twitter Topic','Twitter NER'};
-        l=legend('MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC');
-        set(l,'YColor',[1 1 1],'XColor',[1 1 1]);
+        l=legend('MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC-SVM');
+%         legend('boxoff')
+%         set(l,'YColor',[1 1 1],'XColor',[1 1 1]);
 %         set(0,'defaultfigurecolor','w')
 %         set(l,'Box','off');
         set(gca, 'XTickLabel', name);
