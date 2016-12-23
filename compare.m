@@ -5,7 +5,7 @@ function [  ] = compare( experiment_num )
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     total_repeat_num = 20;
-    begin_num = 2;
+    begin_num = 5;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if experiment_num==24 || experiment_num==28
         mini_annotator = 0;
@@ -62,7 +62,7 @@ function [  ] = compare( experiment_num )
                         topic_idx = randperm(6);
                         Y_temp(:,t) = Z;
                         for i = 1:n
-                            if(Idx(i,1)==topic_idx(1)||Idx(i,1)==topic_idx(2)||Idx(i,1)==topic_idx(3))
+                            if(Idx(i,1)==topic_idx(1)||Idx(i,1)==topic_idx(2))
                                 Y_temp(i,t)= -Y_temp(i,t);
                             end
                         end
@@ -124,13 +124,12 @@ function [  ] = compare( experiment_num )
             
             
             
-            tic
-            W_MV( (num-begin_num)*total_repeat_num+repeat_num,: )=Majority_Method(X,Y,svm_para);            
-            Time_MV ((num-begin_num)*total_repeat_num+repeat_num)= toc;           
-            tic
-            W_M3V( (num-begin_num)*total_repeat_num+repeat_num,: )=M3V(X,Y,svm_para);
-            Time_M3V ((num-begin_num)*total_repeat_num+repeat_num)= toc;          
-            tic
+%             tic
+%             W_MV( (num-begin_num)*total_repeat_num+repeat_num,: )=Majority_Method(X,Y,svm_para);            
+%             Time_MV ((num-begin_num)*total_repeat_num+repeat_num)= toc;           
+%             tic
+%             W_M3V( (num-begin_num)*total_repeat_num+repeat_num,: )=M3V(X,Y,svm_para);
+%             Time_M3V ((num-begin_num)*total_repeat_num+repeat_num)= toc;          
 
             
             tic
