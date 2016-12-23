@@ -91,23 +91,23 @@ switch experiment_num
     case 41
         input_file_dir ='../Input Data/Real Data/Clustering/';
         output_file_dir='../Output Data/Real Data Clustering/Clustering/';
-        total_repeat_num=20;end_num=11;
-        title_name='Computing time(Yan Yan''s Data)';        
+        total_repeat_num=10;end_num=11;
+        title_name='Twitter Topic(Yan Yan''s Data)';        
     case 42
         input_file_dir ='../Input Data/Real Data/latent model/';
         output_file_dir='../Output Data/Real Data Clustering/latent model/';
-        total_repeat_num=20;end_num=11;
-        title_name='Computing time(Raykar''s Data)'; 
+        total_repeat_num=10;end_num=11;
+        title_name='Twitter Topic(Raykar''s Data)'; 
     case 43
         input_file_dir ='../Input Data/Real Data/expertise_difficult_model/';
         output_file_dir='../Output Data/Real Data Clustering/expertise_difficult_model/';
-        total_repeat_num=20;end_num=11;
-        title_name='Computing time(Whitehill''s Data)'; 
+        total_repeat_num=10;end_num=11;
+        title_name='Twitter Topic(Whitehill''s Data)'; 
     case 44
         input_file_dir ='../Input Data/Real Data/Real Label/';
         output_file_dir='../Output Data/Real Data Clustering/Real Label/';
-        total_repeat_num=20;end_num=11;
-        title_name='Computing time(Real Data)';    
+        total_repeat_num=10;end_num=11;
+        title_name='Twitter Topic(Real Data)';    
 
     case 45
         input_file_dir ='../Input Data/Real Data/Clustering/';
