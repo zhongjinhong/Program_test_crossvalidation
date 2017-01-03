@@ -12,7 +12,7 @@ function [  ] = produce_all_data( data_num, experiment_num)
             data_string = '../../Input Data/mushroom/';
         case 4
             load '../../Input Data/Real Data/realdata2.mat';
-            load '../../Input Data/Real Data/true_label.mat';
+%             load '../../Input Data/Real Data/true_label.mat';
             data_string = '../../Input Data/Real Data/';
         case 5
             load '../../Input Data/test_data/dna.mat';
@@ -36,32 +36,32 @@ function [  ] = produce_all_data( data_num, experiment_num)
     switch experiment_num
         case 1
             file_dir = sprintf('%s%s',data_string,'expertise_difficult_model/');
-            if data_num == 4
-                produce_whitehill_data_topic(file_dir, data, label, train_label);
-            else
-                produce_whitehill_data(file_dir, data, label, labeled_num);
-            end            
+%             if data_num == 4
+%                 produce_whitehill_data_topic(file_dir, data, label, train_label);
+%             else
+            produce_whitehill_data(file_dir, data, label, labeled_num);
+%             end            
         case 2
             file_dir = sprintf('%s%s',data_string,'latent model/');
-            if data_num == 4
-                produce_raykar_data_topic(file_dir, data, label, train_label);
-            else
-                produce_raykar_data(file_dir, data, label, labeled_num);
-            end                        
+%             if data_num == 4
+%                 produce_raykar_data_topic(file_dir, data, label, train_label);
+%             else
+            produce_raykar_data(file_dir, data, label, labeled_num);
+%             end                        
         case 3
             file_dir = sprintf('%s%s',data_string,'Clustering/');
-            if data_num == 4
-                produce_yanyan_data_topic(file_dir, data, label, train_label);
-            else
-                produce_yanyan_data(file_dir, data, label, labeled_num);
-            end                        
+%             if data_num == 4
+%                 produce_yanyan_data_topic(file_dir, data, label, train_label);
+%             else
+            produce_yanyan_data(file_dir, data, label, labeled_num);
+%             end                        
         case 4
             file_dir = sprintf('%s%s',data_string,'Real Label/');
-            if data_num == 4
-                produce_real_data_topic( file_dir, data, label, Y, train_label )
-            else
-                produce_real_data(file_dir, data, label, Y);
-            end
+%             if data_num == 4
+%                 produce_real_data_topic( file_dir, data, label, Y, train_label )
+%             else
+            produce_real_data(file_dir, data, label, Y, labeled_num);
+%             end
 
     end
 

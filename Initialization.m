@@ -87,12 +87,18 @@ switch experiment_num
         input_file_dir='../Input Data/Real_Data_AAAI_balance/Real Label/';
         output_file_dir='../Output Data/Real_Data_AAAI_balance/Real Label/';
         title_name='NER(Real Data)';           
+    case 29
+        input_file_dir='../Input Data/system_error/';
+        output_file_dir='../Output Data/system_error/';
+        title_name='system_error';   
+        total_repeat_num=1100;
+        
         
     case 41
-        input_file_dir ='../Input Data/Real Data/Clustering/';
-        output_file_dir='../Output Data/Real Data Clustering/Clustering/';
+        input_file_dir ='../Input Data/system_error/';
+        output_file_dir='../Output Data/system_error/';
         total_repeat_num=10;end_num=11;
-        title_name='Twitter Topic(Yan Yan''s Data)';        
+        title_name='system_error';        
     case 42
         input_file_dir ='../Input Data/Real Data/latent model/';
         output_file_dir='../Output Data/Real Data Clustering/latent model/';
