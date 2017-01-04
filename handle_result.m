@@ -7,8 +7,8 @@ function [  ] = handle_result( experiment_num )
 
     file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
     load(file_name);
-    file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
-    load(file_name);
+%     file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
+%     load(file_name);
     file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
     load(file_name);
     file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
@@ -26,7 +26,7 @@ function [  ] = handle_result( experiment_num )
 %     file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
 %     load(file_name);
     
-%     W_LCM1 = W_LCM;
+    W_PC = W_LCM;
 %     W_LCM2 = W_LCM;
     total_iteration_num=size(W_LCM,1);      
 
@@ -315,13 +315,7 @@ function [  ] = handle_result( experiment_num )
         acc_M3V(i)=mean(Result_M3V( (i-1)*repeat_num+1:i*repeat_num));
 
         acc_Soft_LCM(i)=mean( Result_LCM( (i-1)*repeat_num+1:i*repeat_num) );
-%         acc_Soft_LCM1(i)=mean( Result_LCM1( (i-1)*repeat_num+1:i*repeat_num) );
-%         acc_Soft_LCM2(i)=mean( Result_LCM2( (i-1)*repeat_num+1:i*repeat_num) );
-        
-        
-        
-%         acc_MV_Probability(i)=mean(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
-%         acc_DS_Estimator(i)=mean(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));
+
 
         
         
@@ -331,13 +325,6 @@ function [  ] = handle_result( experiment_num )
         std_M3V(i)=std(Result_M3V( (i-1)*repeat_num+1:i*repeat_num));
 
         std_Soft_LCM(i)=std( Result_LCM( (i-1)*repeat_num+1:i*repeat_num) );
-%         std_Soft_LCM1(i)=std( Result_LCM1( (i-1)*repeat_num+1:i*repeat_num) );
-%         std_Soft_LCM2(i)=std( Result_LCM2( (i-1)*repeat_num+1:i*repeat_num) );
-        
-%         std_MV_Probability(i)=std(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
-%         std_DS_Estimator(i)=std(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));        
-        
-        
 
     end
 

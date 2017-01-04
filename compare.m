@@ -7,7 +7,7 @@ function [  ] = compare( experiment_num )
 %     total_repeat_num = 20;
 %     begin_num = 5;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    if experiment_num==24 || experiment_num==28
+    if experiment_num==24 || experiment_num==28 || experiment_num==29
         mini_annotator = 0;
     else
         mini_annotator = 2;
@@ -135,27 +135,7 @@ function [  ] = compare( experiment_num )
             tic
             [W_LCM( (num-begin_num)*total_repeat_num+repeat_num,: ),weight]=LCM_test_binary(X,Y,svm_para);
             Time_LCM ((num-begin_num)*total_repeat_num+repeat_num)= toc;   
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%               
-%             Y_estimate = weight(n+1:2*n,1)-weight(1:n,1);
-%             Y_estimate = (Y_estimate>0);
-%             Y_estimate = 2*Y_estimate - 1;
-%             
-%             accuracy_lcm(repeat_num) = sum(Y_estimate.*Z>0)/n; 
-%             wrong_value_lcm(1:n,repeat_num) = zeros(n,1);
-%             index_count = 1;
-%             for i = 1:n
-%                 if( Y_estimate(i,1)*Z(i,1)<0 )
-%                     wrong_value_lcm(index_count,repeat_num) = W_LCM1( (num-begin_num)*total_repeat_num+repeat_num,: )*[X(i,:),1]';
-%                     index_count = index_count + 1;
-%                 end
-%             end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             
-            
-            
-            
-%             W_LCM1( (num-begin_num)*total_repeat_num+repeat_num,: ) =LCM(X,Y,svm_para);    
-
-            
+          
             for i=1:n
                 for t=1:expert_num
                     if(Y(i,t)==-1)
@@ -176,25 +156,7 @@ function [  ] = compare( experiment_num )
             [n,d]=size(X);
             X(:,d+1)=1;d=d+1;  
 
-            
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              
-%             [W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: ),miu]=LFC_test_binary(X,Y);
-%             Y_estimate = (miu>0.5);
-%             Y_estimate = 2*Y_estimate - 1;
-%             accuracy_lfc(repeat_num) = sum(Y_estimate.*Z>0)/n;
-%             
-%             wrong_value_lfc(1:n,repeat_num) = zeros(n,1);
-%             index_count = 1;
-%             for i = 1:n
-%                 if( Y_estimate(i,1)*Z(i,1)<0 )
-%                     wrong_value_lfc(index_count,repeat_num) = W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: )*X(i,:)';
-%                     index_count = index_count + 1;
-%                 end
-%             end           
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              
-            
+       
             tic
             W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: )=LFC(X,Y);
             Time_LFC( (num-begin_num)*total_repeat_num+repeat_num )= toc;
@@ -222,22 +184,11 @@ function [  ] = compare( experiment_num )
                 save(file_name,'W_M3V');      
                 file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
                 save(file_name,'W_LCM');
-
-%                 file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
-%                 save(file_name,'W_LCM1');
-%                 file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
-%                 save(file_name,'W_LCM2');             
+            
                 file_name=sprintf('%s%s',output_file_dir,'Time.mat');
                 save(file_name,'Time_*');       
             end
-% 
-% 
-%             file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
-%             save(file_name,'W_MV_Probability');
-%             file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
-%             save(file_name,'W_DS_Estimator');
-% 
-% 
+
 %             count=count;
 %             file_name=sprintf('%s%s',output_file_dir,'count.mat');
 %             save(file_name,'count','-v7.3');
@@ -255,19 +206,7 @@ function [  ] = compare( experiment_num )
 %         save(file_name,'W_MV');
 %         file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
 %         save(file_name,'W_M3V');      
-% %         
-%         file_name=sprintf('%s%s',output_file_dir,'W_LCM1.mat');
-%         save(file_name,'W_LCM1');
-%         file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
-%         save(file_name,'W_LCM2');        
-%         
-%         
-%         file_name=sprintf('%s%s',output_file_dir,'W_MV_Probability.mat');
-%         save(file_name,'W_MV_Probability');
-%         file_name=sprintf('%s%s',output_file_dir,'W_DS_Estimator.mat');
-%         save(file_name,'W_DS_Estimator');
-% 
-% 
+
 %         file_name=sprintf('%s%s',output_file_dir,'Time.mat');
 %         save(file_name,'Time_*');
 

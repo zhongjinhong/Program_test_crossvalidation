@@ -1,7 +1,7 @@
 clear;
 cluster_num = 20;
 instances_num = 50;
-expert_num = 5;
+expert_num = 1;
 K = 10;
 file_dir='../../Input Data/system_error/';
 X = zeros(cluster_num*instances_num, 2);
@@ -47,7 +47,14 @@ for repeat_num = 1:10
         for num = 1:expert_num
             Y_temp = [Y_temp Z];
         end
-
+        
+        
+        non_label_num = floor(0*train_num);
+        for t=1:expert_num
+            index = randperm(train_num);
+            Y_temp(index(1:non_label_num),t) = -2;          
+        end 
+        
         Y = Y_temp;
         file_name=sprintf('%s%s%d%s',file_dir,'X_',(repeat_num-1)*10+k,'.mat');
         save(file_name,'X');
@@ -75,6 +82,8 @@ for repeat_num = 1:10
                         Y(i,t) = -Z(i,1);
                     end             
                 end
+                index = randperm(train_num);
+                Y(index(1:non_label_num),t) = -2;                 
             end
             Y = [Y_temp Y];
             

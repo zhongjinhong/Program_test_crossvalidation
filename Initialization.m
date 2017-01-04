@@ -90,7 +90,7 @@ switch experiment_num
     case 29
         input_file_dir='../Input Data/system_error/';
         output_file_dir='../Output Data/system_error/';
-        title_name='system_error';   
+        title_name='system error';   
         total_repeat_num=1100;
         
         
