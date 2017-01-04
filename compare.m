@@ -160,9 +160,9 @@ function [  ] = compare( experiment_num )
             tic
             W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: )=LFC(X,Y);
             Time_LFC( (num-begin_num)*total_repeat_num+repeat_num )= toc;
-%             tic
-%             W_PC( (num-begin_num)*total_repeat_num+repeat_num,: )=PC(X,Y);
-%             Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
+            tic
+            W_PC( (num-begin_num)*total_repeat_num+repeat_num,: )=PC(X,Y);
+            Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
 
             
             dis_information=sprintf('%s%d  %s%d\n','num=',num,'repeat_num=',repeat_num);
@@ -176,8 +176,8 @@ function [  ] = compare( experiment_num )
             if mod(repeat_num,write_step)==0          
                 file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
                 save(file_name,'W_LFC');
-%                 file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
-%                 save(file_name,'W_PC');
+                file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
+                save(file_name,'W_PC');
                 file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
                 save(file_name,'W_MV');
                 file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');

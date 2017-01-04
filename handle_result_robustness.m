@@ -213,7 +213,7 @@ function [  ] = handle_result_robustness( experiment_num )
     han(3,1)=plot(x_label, acc_LFC,'--ko','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
     han(4,1)=plot(x_label, acc_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
     han(5,1)=plot(x_label, acc_Soft_LCM,'-k','LineWidth',linewidth);
-    le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','CS-LFC-SVM'); 
+    le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','QS-LFC-SVM'); 
 %     set(le,'YColor',[1 1 1],'XColor',[1 1 1]);
     set(le,'Box','off');
 %     set(le,'FontSize',11)
