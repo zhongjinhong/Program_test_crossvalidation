@@ -90,7 +90,7 @@ switch experiment_num
     case 29
         input_file_dir='../Input Data/system_error/';
         output_file_dir='../Output Data/system_error/';
-        title_name='system error';   
+        title_name='Artificial Dataset';   
         total_repeat_num=1100;
         
         
@@ -119,41 +119,49 @@ switch experiment_num
         input_file_dir ='../Input Data/Real Data/Clustering/';
         output_file_dir='../Output Data/Real Data Random1/Clustering/';
         total_repeat_num=100;end_num=11;
-        title_name='Twitter Topic(Clustering data)';        
+        title_name='Twitter Topic(Clustering data)';
+        xlabel_name='# annotators with random noise / # normal annotators';
     case 46
         input_file_dir ='../Input Data/Real Data/latent model/';
         output_file_dir='../Output Data/Real Data Random1/latent model/';
         total_repeat_num=100;end_num=11;
         title_name='Twitter Topic(Raykar''s Data)'; 
+        xlabel_name='# annotators with random noise / # normal annotators';
     case 47
         input_file_dir ='../Input Data/Real Data/expertise_difficult_model/';
         output_file_dir='../Output Data/Real Data Random1/expertise_difficult_model/';
         total_repeat_num=100;end_num=11;
         title_name='Twitter Topic(Whitehill''s Data)'; 
+        xlabel_name='# annotators with random noise / # normal annotators';
     case 48
         input_file_dir ='../Input Data/Real Data/Real Label/';
         output_file_dir='../Output Data/Real Data Random1/Real Label/';
         total_repeat_num=100;end_num=11;
         title_name='Twitter Topic(Real Label)';  
+        xlabel_name='# annotators with random noise / # normal annotators';
 
     case 49
         input_file_dir ='../Input Data/Real Data/Clustering/';
         output_file_dir='../Output Data/Real Data Random2/Clustering/';
         total_repeat_num=100;end_num=11;
-        title_name='Twitter Topic(Clustering Data)';        
+        title_name='Twitter Topic(Clustering Data)'; 
+        xlabel_name='# annotators with consistent noise / # normal annotators';
     case 50
         input_file_dir ='../Input Data/Real Data/latent model/';
         output_file_dir='../Output Data/Real Data Random2/latent model/';
         total_repeat_num=100;end_num=11;
         title_name='Twitter Topic(Raykar''s Data)'; 
+        xlabel_name='# annotators with consistent noise / # normal annotators';
     case 51
         input_file_dir ='../Input Data/Real Data/expertise_difficult_model/';
         output_file_dir='../Output Data/Real Data Random2/expertise_difficult_model/';
         total_repeat_num=100;end_num=11;
         title_name='Twitter Topic(Whitehill''s Data)'; 
+        xlabel_name='# annotators with consistent noise / # normal annotators';
     case 52
         input_file_dir ='../Input Data/Real Data/Real Label/';
         output_file_dir='../Output Data/Real Data Random2/Real Label/';
         total_repeat_num=100;end_num=11;
-        title_name='Twitter Topic(Real Data)';          
+        title_name='Twitter Topic(Real Label)';  
+        xlabel_name='# annotators with consistent noise / # normal annotators';
 end
