@@ -7,7 +7,7 @@ function [  ] = compare( experiment_num )
 %     total_repeat_num = 20;
 %     begin_num = 5;
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    if experiment_num==24 || experiment_num==28 || experiment_num==29
+    if experiment_num==24 || experiment_num==28 || experiment_num==29|| experiment_num==30
         mini_annotator = 0;
     else
         mini_annotator = 2;

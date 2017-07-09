@@ -93,6 +93,11 @@ switch experiment_num
         title_name='Artificial Dataset';   
         total_repeat_num=1100;
         
+    case 30
+        input_file_dir='../Input Data/system_error_new/';
+        output_file_dir='../Output Data/system_error_new/';
+        title_name='Artificial Dataset';   
+        total_repeat_num=1100;        
         
     case 41
         input_file_dir ='../Input Data/system_error/';
