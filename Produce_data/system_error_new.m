@@ -2,7 +2,9 @@ clear;
 cluster_num = 2;
 instances_num = 1000;
 non_label_proba = 0;
-bias = 20*(2*rand(1,10)-1);
+% bias = 20*(2*rand(1,10)-1);
+bias = 20*rand(1,10);
+
 bias = [0 bias];
 
 % bias = (0:1:10)*4;
