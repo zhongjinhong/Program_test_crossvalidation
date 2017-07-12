@@ -3,10 +3,7 @@ function [  ] = compare( experiment_num )
     Initialization();
     svm_para=sprintf('%s','-s 0 -t 0');
     
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     total_repeat_num = 20;
-%     begin_num = 5;
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     if experiment_num==24 || experiment_num==28 || experiment_num==29|| experiment_num==30
         mini_annotator = 0;
     else
@@ -20,18 +17,37 @@ function [  ] = compare( experiment_num )
     end
     
 
+    
+    
     for num=begin_num:end_num
-        for repeat_num=1:total_repeat_num           
-            file_name=sprintf('%s%s%d%s',input_file_dir,'X_',repeat_num,'.mat');
-            load(file_name); 
-            file_name=sprintf('%s%s%d%s',input_file_dir,'Y_',repeat_num,'.mat');
-            load(file_name); 
-            %%%%%%%% load the ground-truth labels %%%%%%%%%%%%%%%%
-            file_name=sprintf('%s%s%d%s',input_file_dir,'Z_',repeat_num,'.mat');
-            load(file_name); 
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
+        for repeat_num=1:total_repeat_num    
+            
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%             total_repeat_num = 20;
+%             num = 11;
+%             repeat_num = 79;
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
+            
+            if experiment_num==30
+                file_name=sprintf('%s%s%d%s',input_file_dir,'X_',(num-1)*total_repeat_num+repeat_num,'.mat');
+                load(file_name); 
+                file_name=sprintf('%s%s%d%s',input_file_dir,'Y_',(num-1)*total_repeat_num+repeat_num,'.mat');
+                load(file_name); 
+                %%%%%%%% load the ground-truth labels %%%%%%%%%%%%%%%%
+                file_name=sprintf('%s%s%d%s',input_file_dir,'Z_',(num-1)*total_repeat_num+repeat_num,'.mat');
+                load(file_name); 
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                    
+            else
+                file_name=sprintf('%s%s%d%s',input_file_dir,'X_',repeat_num,'.mat');
+                load(file_name); 
+                file_name=sprintf('%s%s%d%s',input_file_dir,'Y_',repeat_num,'.mat');
+                load(file_name); 
+                %%%%%%%% load the ground-truth labels %%%%%%%%%%%%%%%%
+                file_name=sprintf('%s%s%d%s',input_file_dir,'Z_',repeat_num,'.mat');
+                load(file_name); 
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+            end
             index = find(sum(Y~=-2,2)>mini_annotator);
-%              index = find(sum(Y~=-2,2)>-1);
             X = X(index,:);
             Y = Y(index,:);  
             Z = Z(index,:);
@@ -144,14 +160,6 @@ function [  ] = compare( experiment_num )
                 end
             end
             
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             
-%             tic
-%             W_MV_Probability( (num-begin_num)*total_repeat_num+repeat_num,: )=MV_Probability(X,Y,svm_para);
-%             Time_MV_Probability((num-begin_num)*total_repeat_num+repeat_num)= toc;
-%             tic
-%             W_DS_Estimator( (num-begin_num)*total_repeat_num+repeat_num,: )=DS_Estimator(X,Y,svm_para);
-%             Time_DS_Estimator ((num-begin_num)*total_repeat_num+repeat_num)= toc;            
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
             [n,d]=size(X);
             X(:,d+1)=1;d=d+1;  
@@ -170,9 +178,6 @@ function [  ] = compare( experiment_num )
             pause(1)
 
 
-            
-            
-            
             if mod(repeat_num,write_step)==0          
                 file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
                 save(file_name,'W_LFC');
@@ -188,27 +193,8 @@ function [  ] = compare( experiment_num )
                 file_name=sprintf('%s%s',output_file_dir,'Time.mat');
                 save(file_name,'Time_*');       
             end
-
-%             count=count;
-%             file_name=sprintf('%s%s',output_file_dir,'count.mat');
-%             save(file_name,'count','-v7.3');
-% 
-           
-        
         
         end
-
-%         file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
-%         save(file_name,'W_LFC');
-%         file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
-%         save(file_name,'W_PC');
-%         file_name=sprintf('%s%s',output_file_dir,'W_MV.mat');
-%         save(file_name,'W_MV');
-%         file_name=sprintf('%s%s',output_file_dir,'W_M3V.mat');
-%         save(file_name,'W_M3V');      
-
-%         file_name=sprintf('%s%s',output_file_dir,'Time.mat');
-%         save(file_name,'Time_*');
 
 
     end
