@@ -2,7 +2,7 @@ clear;
 cluster_num = 2;
 instances_num = 100;
 non_label_proba = 0.7;
-bias = 20*(2*rand(1,10)-1);
+bias = 2*rand(1,10)-1;
 % bias = 20*rand(1,10);
 
 bias = [0 bias];
@@ -16,7 +16,7 @@ X = zeros(cluster_num*instances_num, 2);
 Z = zeros(cluster_num*instances_num, 1);
 
 for repeat_num = 1:10
-    miu = 10*[1 1;-1 -1];
+    miu = [1 1;-1 -1];
     for i = 1:cluster_num
         index = (i-1)*instances_num;
         for j = 1:instances_num
@@ -94,11 +94,13 @@ for repeat_num = 1:10
                     end                    
                 end
             end
-            for t = 1:noisy_times
+
+            Y = [Y_temp Y];
+            
+            for t = 1:noisy_times+1
                 index = randperm(train_num);
                 Y(index(1:non_label_num),t) = -2;  
-            end
-            Y = [Y_temp Y];
+            end           
             
             file_name=sprintf('%s%s%d%s',file_dir,'X_',noisy_times*100+(repeat_num-1)*10+k,'.mat');
             save(file_name,'X');
