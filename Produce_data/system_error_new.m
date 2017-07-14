@@ -20,7 +20,7 @@ for repeat_num = 1:10
     for i = 1:cluster_num
         index = (i-1)*instances_num;
         for j = 1:instances_num
-            X( index+j, :) = normrnd(miu(i,:),10);
+            X( index+j, :) = normrnd(miu(i,:),1);
         end
     end
 
