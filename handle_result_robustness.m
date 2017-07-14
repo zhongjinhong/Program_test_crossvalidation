@@ -185,48 +185,40 @@ function [  ] = handle_result_robustness( experiment_num )
         acc_MV(i)=mean(Result_MV( (i-1)*repeat_num+1:i*repeat_num));
         acc_M3V(i)=mean(Result_M3V( (i-1)*repeat_num+1:i*repeat_num)); 
         acc_Soft_LCM(i)=mean( Result_LCM( (i-1)*repeat_num+1:i*repeat_num) );
-%         acc_MV_Probability(i)=mean(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
-%         acc_DS_Estimator(i)=mean(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));
-
 
         std_LFC(i)=std(Result_LFC( (i-1)*repeat_num+1:i*repeat_num));
         std_PC(i)=std(Result_PC( (i-1)*repeat_num+1:i*repeat_num));
         std_MV(i)=std(Result_MV( (i-1)*repeat_num+1:i*repeat_num));
         std_M3V(i)=std(Result_M3V( (i-1)*repeat_num+1:i*repeat_num));  
         std_Soft_LCM(i)=std( Result_LCM( (i-1)*repeat_num+1:i*repeat_num) );
-%         std_MV_Probability(i)=std(Result_MV_Probability( (i-1)*repeat_num+1:i*repeat_num));
-%         std_DS_Estimator(i)=std(Result_DS_Estimator( (i-1)*repeat_num+1:i*repeat_num));        
 
     end
-    linewidth=2;
-    x_label = 0:end_num-1;
-        
-          
- 
     
-    linewidth=1;
-    MarkerSize = 6;
-    figure();
-    hold on
-    han(1,1)=plot(x_label, acc_MV,'--k','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
-    han(2,1)=plot(x_label, acc_M3V,'-k^','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
-    han(3,1)=plot(x_label, acc_LFC,'--ko','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
-    han(4,1)=plot(x_label, acc_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
-    han(5,1)=plot(x_label, acc_Soft_LCM,'-k','LineWidth',linewidth);
-    le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','QS-LFC'); 
-%     set(le,'YColor',[1 1 1],'XColor',[1 1 1]);
-    set(le,'Box','off');
-%     set(le,'FontSize',11)
-
-    title(title_name,'FontSize',16)
-    xlabel(xlabel_name,'FontSize',16);
-    ylabel('The test accuracy(%)','FontSize',16);
-%     axis([0,10,0.6,1]);
-
     
-%     accuracy_result = [acc_MV,acc_M3V,acc_LFC,acc_PC,acc_MV_Probability,acc_DS_Estimator,acc_Soft_LCM]
-%     std_result=[std_MV,std_M3V,std_LFC,std_PC,std_MV_Probability,std_DS_Estimator,std_Soft_LCM]
-%     file_name=sprintf('%s%s',output_file_dir,'plot_data.mat');
-%     save(file_name,'*');
+    
+    
+    acc_MV
+    acc_Soft_LCM
+    acc_PC    
+    
+%     linewidth=2;
+%     x_label = 0:end_num-1;
+%         
+%     linewidth=1;
+%     MarkerSize = 6;
+%     figure();
+%     hold on
+%     han(1,1)=plot(x_label, acc_MV,'--k','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+%     han(2,1)=plot(x_label, acc_M3V,'-k^','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+%     han(3,1)=plot(x_label, acc_LFC,'--ko','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+%     han(4,1)=plot(x_label, acc_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
+%     han(5,1)=plot(x_label, acc_Soft_LCM,'-k','LineWidth',linewidth);
+%     le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','QS-LFC'); 
+%     set(le,'Box','off');
+% 
+%     title(title_name,'FontSize',16)
+%     xlabel(xlabel_name,'FontSize',16);
+%     ylabel('The test accuracy(%)','FontSize',16);
+
 end
 

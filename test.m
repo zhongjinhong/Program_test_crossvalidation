@@ -49,10 +49,10 @@ function [  ] = test( experiment_num )
             end
             
             
-            non_label_num = floor(126);
-
-            index = randperm(180);
-            Y(index(1:non_label_num),1) = -2;             
+%             non_label_num = floor(126);
+% 
+%             index = randperm(180);
+%             Y(index(1:non_label_num),1) = -2;             
             
             
             
