@@ -8,6 +8,11 @@ X = zeros(cluster_num*instances_num, 2);
 Z = zeros(cluster_num*instances_num, 1);
 cluster_index = zeros(cluster_num*instances_num, 1);
 
+non_label_proba = 0.7;
+bias = 4*rand(1,10);
+bias = [0 bias];
+
+
 for repeat_num = 1:10
     
     miu = 2*rand(cluster_num,2)-1;
