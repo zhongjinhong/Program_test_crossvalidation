@@ -1,24 +1,24 @@
 clear;
-cluster_num = 2;
-instances_num = 100;
-non_label_proba = 0.7;
-bias = 4*rand(1,10);
-bias = [0 bias];
-
+cluster_num = 20;
+instances_num = 10;
 expert_num = 1;
 K = 10;
 file_dir='../../Input Data/system_error_new/';
 X = zeros(cluster_num*instances_num, 2);
 Z = zeros(cluster_num*instances_num, 1);
+cluster_index = zeros(cluster_num*instances_num, 1);
 
 for repeat_num = 1:10
-    miu = [1 1;-1 -1];
+    
+    miu = 2*rand(cluster_num,2)-1;
     for i = 1:cluster_num
         index = (i-1)*instances_num;
         for j = 1:instances_num
             X( index+j, :) = normrnd(miu(i,:),1);
         end
+        cluster_index(index+1:index+instances_num,1) = i;
     end
+
 
     for i = 1:cluster_num*instances_num
         if (sum(X(i,:),2)>=0 ) 
