@@ -107,7 +107,7 @@ switch experiment_num
     case 41
         input_file_dir ='../Input Data/system_error/';
         output_file_dir='../Output Data/system_error/';
-        total_repeat_num=10;end_num=11;
+        total_repeat_num=100;end_num=11;
         title_name='system_error';        
     case 42
         input_file_dir ='../Input Data/Real Data/latent model/';

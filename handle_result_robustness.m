@@ -199,7 +199,8 @@ function [  ] = handle_result_robustness( experiment_num )
     
     acc_MV
     acc_Soft_LCM
-    acc_PC    
+    acc_PC   
+    acc_LFC
     
 %     linewidth=2;
 %     x_label = 0:end_num-1;
