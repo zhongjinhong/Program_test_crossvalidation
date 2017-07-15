@@ -1,6 +1,6 @@
 clear;
 cluster_num = 20;
-instances_num = 10;
+instances_num = 50;
 expert_num = 1;
 K = 10;
 file_dir='../../Input Data/system_error_new/';
@@ -9,7 +9,7 @@ Z = zeros(cluster_num*instances_num, 1);
 cluster_index = zeros(cluster_num*instances_num, 1);
 
 non_label_proba = 0.7;
-bias = 4*rand(1,10);
+bias = 2*rand(1,10);
 bias = [0 bias];
 
 
