@@ -54,7 +54,7 @@ for repeat_num = 1:10
             Y_temp(index(1:error_label_num),t) = -Y_temp(index(1:error_label_num),t);          
         end 
         
-        non_label_num = floor(0*train_num);
+        non_label_num = floor(0.7*train_num);
         for t=1:expert_num
             index = randperm(train_num);
             Y_temp(index(1:non_label_num),t) = -2;          

@@ -104,11 +104,13 @@ switch experiment_num
         xlabel_name='# annotators with random noise / # normal annotators';
         
         
-    case 41
+    case 40
         input_file_dir ='../Input Data/system_error/';
         output_file_dir='../Output Data/system_error/';
         total_repeat_num=100;end_num=11;
-        title_name='system_error';        
+        title_name='system_error';       
+        
+        
     case 42
         input_file_dir ='../Input Data/Real Data/latent model/';
         output_file_dir='../Output Data/Real Data Clustering/latent model/';

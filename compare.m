@@ -4,7 +4,7 @@ function [  ] = compare( experiment_num )
     svm_para=sprintf('%s','-s 0 -t 0');
     
 
-    if experiment_num==24 || experiment_num==28 || experiment_num==29|| experiment_num==30
+    if experiment_num==24 || experiment_num==28 || experiment_num==29|| experiment_num==30|| experiment_num==40
         mini_annotator = 0;
     else
         mini_annotator = 2;
@@ -28,7 +28,7 @@ function [  ] = compare( experiment_num )
 %             repeat_num = 79;
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
             
-            if experiment_num==30
+            if experiment_num==30||40
                 file_name=sprintf('%s%s%d%s',input_file_dir,'X_',(num-1)*total_repeat_num+repeat_num,'.mat');
                 load(file_name); 
                 file_name=sprintf('%s%s%d%s',input_file_dir,'Y_',(num-1)*total_repeat_num+repeat_num,'.mat');
@@ -53,38 +53,38 @@ function [  ] = compare( experiment_num )
             Z = Z(index,:);
             [n,expert_num] = size(Y);
             switch experiment_num
-                case {41,42,43,44}
-                    file_name=sprintf('%s%s%d%s',input_file_dir,'true_label_',repeat_num,'.mat');
-                    load(file_name); 
-                    train_label = train_label(index,:);
-                    Idx = zeros(n,1);
-                    index = find(train_label == 1);
-                    Idx(index,1) = 1;
-                    index = find(train_label == 2);
-                    Idx(index,1) = 2;
-                    index = find(train_label == 4);
-                    Idx(index,1) = 3;
-
-                    index = find(train_label == 3);
-                    job_num = size(index,1);
-                    index1 = randperm(job_num);
-                    instance_num = floor(job_num/3);
-                    Idx( index(index1(1:instance_num)),1 ) = 4;
-                    Idx( index(index1(instance_num+1:instance_num*2)),1 ) = 5;
-                    Idx( index(index1(instance_num*2+1:end)),1 ) = 6;  
-                    
-                    Y_temp = zeros(n,expert_num*(num-1));
-                    for t = 1:expert_num*(num-1)
-                        topic_idx = randperm(6);
-                        Y_temp(:,t) = Z;
-                        for i = 1:n
-                            if(Idx(i,1)==topic_idx(1)||Idx(i,1)==topic_idx(2))
-                                Y_temp(i,t)= -Y_temp(i,t);
-                            end
-                        end
-                    end
-
-                    Y = [Y Y_temp];                                
+%                 case {41,42,43,44}
+%                     file_name=sprintf('%s%s%d%s',input_file_dir,'true_label_',repeat_num,'.mat');
+%                     load(file_name); 
+%                     train_label = train_label(index,:);
+%                     Idx = zeros(n,1);
+%                     index = find(train_label == 1);
+%                     Idx(index,1) = 1;
+%                     index = find(train_label == 2);
+%                     Idx(index,1) = 2;
+%                     index = find(train_label == 4);
+%                     Idx(index,1) = 3;
+% 
+%                     index = find(train_label == 3);
+%                     job_num = size(index,1);
+%                     index1 = randperm(job_num);
+%                     instance_num = floor(job_num/3);
+%                     Idx( index(index1(1:instance_num)),1 ) = 4;
+%                     Idx( index(index1(instance_num+1:instance_num*2)),1 ) = 5;
+%                     Idx( index(index1(instance_num*2+1:end)),1 ) = 6;  
+%                     
+%                     Y_temp = zeros(n,expert_num*(num-1));
+%                     for t = 1:expert_num*(num-1)
+%                         topic_idx = randperm(6);
+%                         Y_temp(:,t) = Z;
+%                         for i = 1:n
+%                             if(Idx(i,1)==topic_idx(1)||Idx(i,1)==topic_idx(2))
+%                                 Y_temp(i,t)= -Y_temp(i,t);
+%                             end
+%                         end
+%                     end
+% 
+%                     Y = [Y Y_temp];                                
                 case {45,46,47,48}
                     rn_temp = rand(n,expert_num*(num-1));
                     Y_temp = zeros(n,expert_num*(num-1));
