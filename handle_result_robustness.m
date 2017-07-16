@@ -195,13 +195,17 @@ function [  ] = handle_result_robustness( experiment_num )
     end
     
     
-    
-    
+    file_name=sprintf('%s%s',output_file_dir,'handle_result_robustness.mat');
+    save(file_name,'*'); 
     acc_MV
     acc_Soft_LCM
     acc_PC   
     acc_LFC
     
+    
+    
+    file_name=sprintf('%s%s',output_file_dir,'handle_result_robustness.mat');
+    load(file_name,'*');     
 %     linewidth=2;
 %     x_label = 0:end_num-1;
 %         
