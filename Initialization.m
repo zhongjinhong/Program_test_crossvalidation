@@ -99,16 +99,24 @@ switch experiment_num
     case 30
         input_file_dir='../Input Data/system_error_new/';
         output_file_dir='../Output Data/system_error_new/';    
-        title_name='system_error';
+        title_name='type2';
         total_repeat_num=100;end_num=11;
-        xlabel_name='# annotators with random noise / # normal annotators';
+        xlabel_name='# annotators with systematic noise / # normal annotators';
+        
+    case 31
+        input_file_dir='../Input Data/system_error_new/';
+        output_file_dir='../Output Data/system_error_new/';    
+        title_name='type3';
+        total_repeat_num=100;end_num=11;
+        xlabel_name='# annotators with systematic noise / # normal annotators';        
         
         
     case 40
         input_file_dir ='../Input Data/system_error/';
         output_file_dir='../Output Data/system_error/';
         total_repeat_num=100;end_num=11;
-        title_name='system_error';       
+        title_name='type 1';  
+        xlabel_name='# annotators with systematic noise / # normal annotators';
         
         
     case 42

@@ -4,7 +4,7 @@ function [  ] = compare( experiment_num )
     svm_para=sprintf('%s','-s 0 -t 0');
     
 
-    if experiment_num==24 || experiment_num==28 || experiment_num==29|| experiment_num==30|| experiment_num==40
+    if experiment_num==24 || experiment_num==28 || experiment_num==29|| experiment_num==30|| experiment_num==31 || experiment_num==40
         mini_annotator = 0;
     else
         mini_annotator = 2;
@@ -28,7 +28,7 @@ function [  ] = compare( experiment_num )
 %             repeat_num = 79;
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
             
-            if experiment_num==30||40
+            if experiment_num==30||31||40
                 file_name=sprintf('%s%s%d%s',input_file_dir,'X_',(num-1)*total_repeat_num+repeat_num,'.mat');
                 load(file_name); 
                 file_name=sprintf('%s%s%d%s',input_file_dir,'Y_',(num-1)*total_repeat_num+repeat_num,'.mat');

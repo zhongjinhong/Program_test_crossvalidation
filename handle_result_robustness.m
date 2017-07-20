@@ -1,11 +1,6 @@
 function [  ] = handle_result_robustness( experiment_num )
     Initialization();
     
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     total_repeat_num=2;begin_num=10;end_num=11;count=zeros(end_num*10,(end_num-begin_num+1)*total_repeat_num); 
-%     total_repeat_num = 10;
-%     end_num = 6;
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
     file_name=sprintf('%s%s',output_file_dir,'W_LFC.mat');
     load(file_name);
     file_name=sprintf('%s%s',output_file_dir,'W_PC.mat');
@@ -17,24 +12,22 @@ function [  ] = handle_result_robustness( experiment_num )
     file_name=sprintf('%s%s',output_file_dir,'W_LCM.mat');
     load(file_name);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
-%     file_name=sprintf('%s%s',output_file_dir,'W_LFC1.mat');
-%     load(file_name);
-%     W_LCM = W_LCM2;
-% 
-%     file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
-%     load(file_name);
-%     W_LCM2 = W_LCM;
-%     total_repeat_num = size(W_LFC,1);
-%     end_num = 5;
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Debug %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+% %     file_name=sprintf('%s%s',output_file_dir,'W_LFC1.mat');
+% %     load(file_name);
+% %     W_LCM = W_LCM2;
+% % 
+% %     file_name=sprintf('%s%s',output_file_dir,'W_LCM2.mat');
+% %     load(file_name);
+% %     W_LCM2 = W_LCM;
+% %     total_repeat_num = size(W_LFC,1);
+% %     end_num = 5;
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
     Result_LFC=zeros(total_repeat_num*(end_num-begin_num+1),1);
     Result_PC = Result_LFC;
     Result_MV = Result_LFC;
     Result_M3V = Result_LFC;
     Result_LCM = Result_LFC;
-%     Result_MV_Probability = Result_LFC;
-%     Result_DS_Estimator = Result_LFC;
     for repeat_num = 1:total_repeat_num
         for num=begin_num:end_num
             file_name=sprintf('%s%s%d%s',input_file_dir,'X_test_',repeat_num,'.mat');
@@ -137,42 +130,6 @@ function [  ] = handle_result_robustness( experiment_num )
             end
             AUC_LCM(t) = trapz(fpr,tpr);
             Result_LCM(t)= Result_LCM(t)/n;            
-%             
-%             
-%             for i=1:n
-%                 predict_label(i,1)=W_MV_Probability(t,:)*X_test(i,:)';
-%                 if(predict_label(i,1)*Y_test(i)>0)
-%                     Result_MV_Probability(t)=Result_MV_Probability(t)+1;
-%                 elseif(predict_label(i,1)*Y_test(i)==0)
-%                     Result_MV_Probability(t)=Result_MV_Probability(t)+0.5;
-%                 end
-%             end
-%             [tpr,fpr] = roc(target,predict_label');
-%             point_num = size(tpr,2);
-%             if tpr(point_num)~=1 || fpr(point_num)~=1
-%                 tpr(1,point_num+1) = 1;
-%                 fpr(1,point_num+1) = 1;
-%             end
-%             AUC_MV_Probability(t) = trapz(fpr,tpr);
-%             Result_MV_Probability(t)= Result_MV_Probability(t)/n;            
-%             
-%             for i=1:n
-%                 predict_label(i,1)=W_DS_Estimator(t,:)*X_test(i,:)';
-%                 if(predict_label(i,1)*Y_test(i)>0)
-%                     Result_DS_Estimator(t)=Result_DS_Estimator(t)+1;
-%                 elseif(predict_label(i,1)*Y_test(i)==0)
-%                     Result_DS_Estimator(t)=Result_DS_Estimator(t)+0.5;
-%                 end
-%             end
-%             [tpr,fpr] = roc(target,predict_label');
-%             point_num = size(tpr,2);
-%             if tpr(point_num)~=1 || fpr(point_num)~=1
-%                 tpr(1,point_num+1) = 1;
-%                 fpr(1,point_num+1) = 1;
-%             end
-%             AUC_DS_Estimator(t) = trapz(fpr,tpr);
-%             Result_DS_Estimator(t)= Result_DS_Estimator(t)/n;
-            
             
             
         end
@@ -204,8 +161,8 @@ function [  ] = handle_result_robustness( experiment_num )
     
     
     
-    file_name=sprintf('%s%s',output_file_dir,'handle_result_robustness.mat');
-    load(file_name,'*');     
+%     file_name=sprintf('%s%s',output_file_dir,'handle_result_robustness.mat');
+%     load(file_name,'*');     
 %     linewidth=2;
 %     x_label = 0:end_num-1;
 %         
