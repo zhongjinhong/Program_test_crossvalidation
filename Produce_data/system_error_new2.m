@@ -93,7 +93,7 @@ for repeat_num = 1:10
             Y = zeros(train_num, noisy_times*expert_num);
             for i = 1:train_num      
                 for t = 1:noisy_times*expert_num
-                    fx = norm(X(i,:)-bias_miu(t,:),2);
+                    fx = norm(X(i,:)-bias_miu(t,:),2)-1;
                     positive_proba = 1/( 1+exp(-fx) );
                     if rand() < positive_proba
                         Y(i,t) = 1;
