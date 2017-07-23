@@ -8,11 +8,11 @@ X = zeros(cluster_num*instances_num, 2);
 Z = zeros(cluster_num*instances_num, 1);
 cluster_index = zeros(cluster_num*instances_num, 1);
 
-non_label_proba = 0.7;
-error_label_proba = 0.3;
+non_label_proba = 0;
+error_label_proba = 0;
 bias_miu = zeros([expert_num*10, 2]);
 for t = 1:expert_num*10
-    bias_miu(t,:) = normrnd([0, 0],0.5);
+    bias_miu(t,:) = normrnd([0, 0],1);
 end
 
 
