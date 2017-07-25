@@ -170,16 +170,16 @@ function [  ] = compare( experiment_num )
             tic
             W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: )=LFC(X,Y);
             Time_LFC( (num-begin_num)*total_repeat_num+repeat_num )= toc;
-%             tic
-%             W_PC( (num-begin_num)*total_repeat_num+repeat_num,: )=PC(X,Y);
-%             Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
+            tic
+            W_PC( (num-begin_num)*total_repeat_num+repeat_num,: )=PC(X,Y);
+            Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
 
 
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-            tic
-            W_PC = W_MV;
-            Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
+%             tic
+%             W_PC = W_MV;
+%             Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
             
             

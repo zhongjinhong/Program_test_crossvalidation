@@ -62,7 +62,7 @@ function [W,weight]=LCM_test_binary(X,Y,svm_para)
             balance = sum( predict_lable(k,t).label == 1)/n;
 
 
-            if balance == 1 || balance == 0
+            if balance >=0.9 || balance <= 0.1
                 accuracy_bagging(k,t) = 0.5;
                 continue;
             end

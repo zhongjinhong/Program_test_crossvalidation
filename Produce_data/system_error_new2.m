@@ -9,7 +9,7 @@ Z = zeros(cluster_num*instances_num, 1);
 cluster_index = zeros(cluster_num*instances_num, 1);
 
 non_label_proba = 0.7;
-error_label_proba = 0.2;
+error_label_proba = 0.3;
 bias_miu = zeros([expert_num*10, 2]);
 for t = 1:expert_num*10
     bias_miu(t,:) = normrnd([0, 0],1);
@@ -72,7 +72,7 @@ for repeat_num = 1:10
             Y(index(1:non_label_num),t) = -2;          
         end             
         
-        
+
         Y_temp = Y;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -115,7 +115,7 @@ for repeat_num = 1:10
 %                 for t = 1:noisy_times*expert_num
 %                     fx = norm(X(i,:)-bias_miu(t,:),2)-1;
 %                     fx = rand_num(1,1)*X(i,1)^2+rand_num(1,2)*X(i,1)*X(i,2)+rand_num(1,3)*X(i,2)^2 +rand_num(1,4);
-                    fx = rand_num(1,1)*norm(X(i,:),2)^2 - (rand_num(1,2)+1)/2;
+                    fx = rand_num(1,1)*norm(X(i,:),2)^2 + rand_num(1,2);
                     positive_proba = 1/( 1+exp(-fx) );
                     if rand() < positive_proba
                         Y(i,t) = 1;
@@ -146,7 +146,12 @@ for repeat_num = 1:10
 %         end        
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              
             
-            
+            for t=1:(noisy_times+1)*expert_num
+                balance = sum(Y(:,t)==1)/( sum(Y(:,t)==1)+sum(Y(:,t)==-1) );
+                if balance >=0.9 || balance <= 0.1
+                    Y(:,t) = -2;
+                end
+            end         
             
             
 
