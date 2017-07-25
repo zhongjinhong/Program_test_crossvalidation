@@ -20,7 +20,9 @@ function [  ] = compare( experiment_num )
     
     
     for num=begin_num:end_num
-        for repeat_num=1:total_repeat_num    
+        for repeat_num=1:total_repeat_num   
+%     for num=end_num:end_num        
+%         for repeat_num=total_repeat_num-10:total_repeat_num    
             
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %             total_repeat_num = 20;
@@ -168,10 +170,18 @@ function [  ] = compare( experiment_num )
             tic
             W_LFC( (num-begin_num)*total_repeat_num+repeat_num,: )=LFC(X,Y);
             Time_LFC( (num-begin_num)*total_repeat_num+repeat_num )= toc;
-            tic
-            W_PC( (num-begin_num)*total_repeat_num+repeat_num,: )=PC(X,Y);
-            Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
+%             tic
+%             W_PC( (num-begin_num)*total_repeat_num+repeat_num,: )=PC(X,Y);
+%             Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
 
+
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+            tic
+            W_PC = W_MV;
+            Time_PC ((num-begin_num)*total_repeat_num+repeat_num)= toc;
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+            
             
             dis_information=sprintf('%s%d  %s%d\n','num=',num,'repeat_num=',repeat_num);
             disp(dis_information);

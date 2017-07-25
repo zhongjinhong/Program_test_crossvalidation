@@ -8,8 +8,8 @@ X = zeros(cluster_num*instances_num, 2);
 Z = zeros(cluster_num*instances_num, 1);
 cluster_index = zeros(cluster_num*instances_num, 1);
 
-non_label_proba = 0;
-error_label_proba = 0;
+non_label_proba = 0.7;
+error_label_proba = 0.2;
 bias_miu = zeros([expert_num*10, 2]);
 for t = 1:expert_num*10
     bias_miu(t,:) = normrnd([0, 0],1);
@@ -69,11 +69,28 @@ for repeat_num = 1:10
         
         for t=1:expert_num
             index = randperm(train_num);
-            Y_temp(index(1:non_label_num),t) = -2;          
+            Y(index(1:non_label_num),t) = -2;          
         end             
-        Y_temp = Y;
         
+        
+        Y_temp = Y;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         for i = 1:train_num
+%             for t = 1:expert_num
+%                 if rand() < 0.5
+%                     Y(i,t) = 1;
+%                 else
+%                     Y(i,t) = -1;
+%                 end                
+%             end
+%           
+%         end        
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
+        
+        
+        
+        
 
         file_name=sprintf('%s%s%d%s',file_dir,'X_',(repeat_num-1)*10+k,'.mat');
         save(file_name,'X');
@@ -91,9 +108,14 @@ for repeat_num = 1:10
         
         for noisy_times = 1:10
             Y = zeros(train_num, noisy_times*expert_num);
-            for i = 1:train_num      
-                for t = 1:noisy_times*expert_num
-                    fx = norm(X(i,:)-bias_miu(t,:),2)-1;
+            for t = 1:noisy_times*expert_num
+                rand_num = 2*rand(1,4)-1;
+                for i = 1:train_num 
+%             for i = 1:train_num      
+%                 for t = 1:noisy_times*expert_num
+%                     fx = norm(X(i,:)-bias_miu(t,:),2)-1;
+%                     fx = rand_num(1,1)*X(i,1)^2+rand_num(1,2)*X(i,1)*X(i,2)+rand_num(1,3)*X(i,2)^2 +rand_num(1,4);
+                    fx = rand_num(1,1)*norm(X(i,:),2)^2 - (rand_num(1,2)+1)/2;
                     positive_proba = 1/( 1+exp(-fx) );
                     if rand() < positive_proba
                         Y(i,t) = 1;
@@ -108,6 +130,24 @@ for repeat_num = 1:10
                 Y(index(1:non_label_num),t) = -2;  
             end   
             Y = [Y_temp Y];
+
+            
+            
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%         for i = 1:train_num
+%             for t = 1:(noisy_times+1)*expert_num
+%                 if rand() < 0.5
+%                     Y(i,t) = 1;
+%                 else
+%                     Y(i,t) = -1;
+%                 end                
+%             end
+%           
+%         end        
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              
+            
+            
+            
             
 
             file_name=sprintf('%s%s%d%s',file_dir,'X_',noisy_times*100+(repeat_num-1)*10+k,'.mat');
