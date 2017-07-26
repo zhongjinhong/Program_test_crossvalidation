@@ -152,35 +152,36 @@ function [  ] = handle_result_robustness( experiment_num )
     end
     
     
-    file_name=sprintf('%s%s',output_file_dir,'handle_result_robustness.mat');
-    save(file_name,'*'); 
-    acc_MV
-    acc_Soft_LCM
-    acc_PC   
-    acc_LFC
+%     file_name=sprintf('%s%s',output_file_dir,'handle_result_robustness.mat');
+%     save(file_name,'*'); 
+%     acc_MV
+%     acc_Soft_LCM
+%     acc_PC   
+%     acc_LFC
     
     
     
 %     file_name=sprintf('%s%s',output_file_dir,'handle_result_robustness.mat');
-%     load(file_name,'*');     
-%     linewidth=2;
-%     x_label = 0:end_num-1;
-%         
-%     linewidth=1;
-%     MarkerSize = 6;
-%     figure();
-%     hold on
-%     han(1,1)=plot(x_label, acc_MV,'--k','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
-%     han(2,1)=plot(x_label, acc_M3V,'-k^','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
-%     han(3,1)=plot(x_label, acc_LFC,'--ko','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
-%     han(4,1)=plot(x_label, acc_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
-%     han(5,1)=plot(x_label, acc_Soft_LCM,'-k','LineWidth',linewidth);
-%     le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','QS-LFC'); 
-%     set(le,'Box','off');
-% 
-%     title(title_name,'FontSize',16)
-%     xlabel(xlabel_name,'FontSize',16);
-%     ylabel('The test accuracy(%)','FontSize',16);
+%     load(file_name,'*');  
+
+    linewidth=2;
+    x_label = 0:end_num-1;
+        
+    linewidth=1;
+    MarkerSize = 6;
+    figure();
+    hold on
+    han(1,1)=plot(x_label, acc_MV,'--k','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+    han(2,1)=plot(x_label, acc_M3V,'-k^','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+    han(3,1)=plot(x_label, acc_LFC,'--ko','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize);
+    han(4,1)=plot(x_label, acc_PC,'-kx','LineWidth',linewidth,'MarkerFaceColor','w','MarkerSize',MarkerSize+2);
+    han(5,1)=plot(x_label, acc_Soft_LCM,'-k','LineWidth',linewidth);
+    le=legend(han(1:5),'MV-LFC','M3V-LFC','LC Model','PC Model','QS-LFC'); 
+    set(le,'Box','off');
+
+    title(title_name,'FontSize',16)
+    xlabel(xlabel_name,'FontSize',16);
+    ylabel('The test accuracy(%)','FontSize',16);
 
 end
 

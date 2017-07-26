@@ -1,3 +1,24 @@
+estimate_label = zeros(900,1);
+for i = 1:900
+    estimate_label(i,1) = weight(i+900)>weight(i);
+end
+estimate_label = 2*estimate_label - 1;
+
+
+ground_truth = 2*(sum(X,2)>0)-1;
+
+
+for t = 1:33
+    accuracy_label(1,t) = sum(Y(:,1)==Y(:,t))/sum(Y(:,t)~=-2);
+end
+sum(Y==1)
+
+sum(Y==-1)
+for t=1:(noisy_times+1)*expert_num
+    balance(t) = sum(Y(:,t)==1)/sum(Y(:,t)==-1);
+end   
+
+
 function [  ] = test( experiment_num )
     addpath('tools/');
     Initialization();

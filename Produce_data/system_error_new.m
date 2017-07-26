@@ -63,10 +63,11 @@ for repeat_num = 1:10
           
         end
 
+        
         for t=1:expert_num
             index = randperm(train_num);
-            Y_temp(index(1:non_label_num),t) = -2;          
-        end         
+            Y(index(1:non_label_num),t) = -2;          
+        end        
         
         
         Y_temp = Y;
