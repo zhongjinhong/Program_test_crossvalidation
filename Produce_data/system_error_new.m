@@ -108,6 +108,16 @@ for repeat_num = 1:10
             Y = [Y_temp Y];
             
 
+            
+            for t=1:(noisy_times+1)*expert_num
+                balance = sum(Y(:,t)==1)/( sum(Y(:,t)==1)+sum(Y(:,t)==-1) );
+                if balance >=0.95 || balance <= 0.05
+                    Y(:,t) = -2;
+                end
+            end               
+            
+            
+            
             file_name=sprintf('%s%s%d%s',file_dir,'X_',noisy_times*100+(repeat_num-1)*10+k,'.mat');
             save(file_name,'X');
             file_name=sprintf('%s%s%d%s',file_dir,'Y_',noisy_times*100+(repeat_num-1)*10+k,'.mat');

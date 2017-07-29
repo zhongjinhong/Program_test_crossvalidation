@@ -99,14 +99,14 @@ switch experiment_num
     case 30
         input_file_dir='../Input Data/system_error_new/';
         output_file_dir='../Output Data/system_error_new/';    
-        title_name='type2';
+        title_name='Linear Bias Systematic Noise Dataset';
         total_repeat_num=100;end_num=11;
         xlabel_name='# annotators with systematic noise / # normal annotators';
         
     case 31
         input_file_dir='../Input Data/system_error_new2/';
         output_file_dir='../Output Data/system_error_new2/';    
-        title_name='type3';
+        title_name='Nonlinear Bias Systematic Noise Dataset';
         total_repeat_num=100;end_num=11;
         xlabel_name='# annotators with systematic noise / # normal annotators';        
         
@@ -115,7 +115,7 @@ switch experiment_num
         input_file_dir ='../Input Data/system_error/';
         output_file_dir='../Output Data/system_error/';
         total_repeat_num=100;end_num=11;
-        title_name='type 1';  
+        title_name='Subset Systematic Noise Dataset';  
         xlabel_name='# annotators with systematic noise / # normal annotators';
         
         

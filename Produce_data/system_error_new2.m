@@ -148,7 +148,7 @@ for repeat_num = 1:10
             
             for t=1:(noisy_times+1)*expert_num
                 balance = sum(Y(:,t)==1)/( sum(Y(:,t)==1)+sum(Y(:,t)==-1) );
-                if balance >=0.9 || balance <= 0.1
+                if balance >=0.95 || balance <= 0.05
                     Y(:,t) = -2;
                 end
             end         
